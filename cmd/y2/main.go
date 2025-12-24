@@ -10,8 +10,8 @@ import (
 	"os"
 
 	"github.com/stainless-sdks/y2-cli/pkg/cmd"
-	"github.com/stainless-sdks/y2-go"
 	"github.com/tidwall/gjson"
+	"github.com/y2-intel/y2-go"
 )
 
 func main() {
