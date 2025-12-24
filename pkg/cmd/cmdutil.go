@@ -12,7 +12,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/stainless-sdks/y2-cli/internal/jsonview"
+	"github.com/y2-intel/y2-cli/internal/jsonview"
 	"github.com/y2-intel/y2-go/option"
 
 	"github.com/itchyny/json2yaml"

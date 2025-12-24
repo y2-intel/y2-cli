@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/y2-cli
+module github.com/y2-intel/y2-cli
 
 go 1.25
 
