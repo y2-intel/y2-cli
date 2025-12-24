@@ -10,12 +10,12 @@ require (
 	github.com/goccy/go-yaml v1.18.0
 	github.com/itchyny/json2yaml v0.1.4
 	github.com/muesli/reflow v0.3.0
-	github.com/stainless-sdks/y2-go v0.0.0-20251224194317-c89674d801e7
 	github.com/stretchr/testify v1.10.0
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/pretty v1.2.1
 	github.com/urfave/cli-docs/v3 v3.0.0-alpha6
 	github.com/urfave/cli/v3 v3.3.2
+	github.com/y2-intel/y2-go v0.0.0-20251224194337-72de84ef18e8
 	golang.org/x/sys v0.38.0
 	golang.org/x/term v0.37.0
 )
