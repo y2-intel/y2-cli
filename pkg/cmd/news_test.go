@@ -5,7 +5,7 @@ package cmd
 import (
 	"testing"
 
-	"github.com/stainless-sdks/y2-cli/internal/mocktest"
+	"github.com/y2-intel/y2-cli/internal/mocktest"
 )
 
 func TestNewsList(t *testing.T) {

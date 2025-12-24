@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/stainless-sdks/y2-cli/internal/apiquery"
-	"github.com/stainless-sdks/y2-cli/internal/requestflag"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
+	"github.com/y2-intel/y2-cli/internal/apiquery"
+	"github.com/y2-intel/y2-cli/internal/requestflag"
 	"github.com/y2-intel/y2-go"
 	"github.com/y2-intel/y2-go/option"
 )

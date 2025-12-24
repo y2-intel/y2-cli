@@ -8,15 +8,21 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ### Installing with Go
 
+<!-- x-release-please-start-version -->
+
 ```sh
-go install 'github.com/stainless-sdks/y2-cli/cmd/y2@latest'
+go install 'github.com/y2-intel/y2-cli/cmd/y2@latest'
 ```
 
 ### Running Locally
 
+<!-- x-release-please-start-version -->
+
 ```sh
 go run cmd/y2/main.go
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
