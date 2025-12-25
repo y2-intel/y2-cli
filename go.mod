@@ -15,7 +15,7 @@ require (
 	github.com/tidwall/pretty v1.2.1
 	github.com/urfave/cli-docs/v3 v3.0.0-alpha6
 	github.com/urfave/cli/v3 v3.3.2
-	github.com/y2-intel/y2-go v0.0.0-20251224194337-72de84ef18e8
+	github.com/y2-intel/y2-go v0.0.2
 	golang.org/x/sys v0.38.0
 	golang.org/x/term v0.37.0
 )
