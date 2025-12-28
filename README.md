@@ -1,6 +1,6 @@
 # Y2 CLI
 
-The official CLI for the [Y2 REST API](https://y2.yeetum.com).
+The official CLI for the [Y2 REST API](https://y2.dev/docs/).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
