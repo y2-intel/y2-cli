@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2025-12-31)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/y2-intel/y2-cli/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** api update ([68ec209](https://github.com/y2-intel/y2-cli/commit/68ec209e9103bd3da4bdaf3ca691dcadd365f33f))
+
 ## 0.1.0 (2025-12-28)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/y2-intel/y2-cli/compare/v0.0.1...v0.1.0)
