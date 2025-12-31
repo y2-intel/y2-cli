@@ -8,10 +8,10 @@ import (
 	"mime/multipart"
 	"os"
 
-	"github.com/stainless-sdks/y2-cli/internal/apiform"
-	"github.com/stainless-sdks/y2-cli/internal/apiquery"
-	"github.com/stainless-sdks/y2-cli/internal/debugmiddleware"
-	"github.com/stainless-sdks/y2-cli/internal/requestflag"
+	"github.com/y2-intel/y2-cli/internal/apiform"
+	"github.com/y2-intel/y2-cli/internal/apiquery"
+	"github.com/y2-intel/y2-cli/internal/debugmiddleware"
+	"github.com/y2-intel/y2-cli/internal/requestflag"
 	"github.com/y2-intel/y2-go/option"
 
 	"github.com/goccy/go-yaml"
