@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.0 (2026-01-12)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/y2-intel/y2-cli/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* added support for --foo.baz inner field flags ([4b3c5d4](https://github.com/y2-intel/y2-cli/commit/4b3c5d43a7f18f527627e3d0ba7a8a9a2727546f))
+* enable CI tests ([7d6d8de](https://github.com/y2-intel/y2-cli/commit/7d6d8dee7fdb46a23fa3b008481ec119c11e308b))
+* improved behavior for exploring paginated/streamed endpoints ([48543cc](https://github.com/y2-intel/y2-cli/commit/48543ccd557cd40a4276dfb96c5c3b7f1e827f02))
+
+
+### Bug Fixes
+
+* check required arguments ([4bb1f8f](https://github.com/y2-intel/y2-cli/commit/4bb1f8ff36c9ffe850a321eb36e4c4b6d0727b5c))
+* fixed placeholders for date/time arguments ([7aa41a9](https://github.com/y2-intel/y2-cli/commit/7aa41a9852e226832a00ca17e09c0ea61dd784d9))
+
+
+### Chores
+
+* **internal:** codegen related update ([3d98cfa](https://github.com/y2-intel/y2-cli/commit/3d98cfa19a6d0a4aaf100e50a8bdb6fe22599188))
+* **internal:** codegen related update ([ff9767b](https://github.com/y2-intel/y2-cli/commit/ff9767bcab51ae4b093ff163c940b6d46cd09d20))
+
 ## 0.2.0 (2025-12-31)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/y2-intel/y2-cli/compare/v0.1.0...v0.2.0)

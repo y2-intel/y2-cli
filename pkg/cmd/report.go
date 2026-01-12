@@ -20,7 +20,8 @@ var reportsRetrieve = cli.Command{
 	Usage: "Returns the full content of a specific intelligence report, including HTML\ncontent, sources, and audio metadata.",
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name: "report-id",
+			Name:     "report-id",
+			Required: true,
 		},
 	},
 	Action:          handleReportsRetrieve,
@@ -52,7 +53,8 @@ var reportsRetrieveAudio = cli.Command{
 	Usage: "Returns audio file metadata or redirects to the CDN URL. Requires the\n`reports:audio` scope.",
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name: "report-id",
+			Name:     "report-id",
+			Required: true,
 		},
 		&requestflag.Flag[bool]{
 			Name:      "redirect",

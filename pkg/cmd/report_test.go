@@ -33,6 +33,6 @@ func TestReportsRetrieveAudio(t *testing.T) {
 		t,
 		"reports", "retrieve-audio",
 		"--report-id", "reportId",
-		"--redirect",
+		"--redirect=true",
 	)
 }
