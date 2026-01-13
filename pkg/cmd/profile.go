@@ -17,6 +17,7 @@ import (
 var profilesList = cli.Command{
 	Name:            "list",
 	Usage:           "Returns a list of intelligence profiles the user is subscribed to, including\nsubscription status and delivery preferences.",
+	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleProfilesList,
 	HideHelpCommand: true,
