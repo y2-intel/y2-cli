@@ -70,6 +70,7 @@ func init() {
 			{
 				Name:     "reports",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&reportsRetrieve,
 					&reportsList,
@@ -79,6 +80,7 @@ func init() {
 			{
 				Name:     "profiles",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&profilesList,
 				},
@@ -86,6 +88,7 @@ func init() {
 			{
 				Name:     "news",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&newsList,
 					&newsGetRecaps,
