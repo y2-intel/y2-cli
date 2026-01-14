@@ -17,7 +17,6 @@ require (
 	github.com/urfave/cli/v3 v3.3.2
 	github.com/y2-intel/y2-go v0.0.0
 	golang.org/x/sys v0.38.0
-	golang.org/x/term v0.37.0
 )
 
 require (
