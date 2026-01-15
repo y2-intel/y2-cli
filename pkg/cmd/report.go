@@ -62,6 +62,7 @@ var reportsRetrieveAudio = cli.Command{
 		&requestflag.Flag[bool]{
 			Name:      "redirect",
 			Usage:     "If true, returns 302 redirect to audio CDN URL",
+			Default:   false,
 			QueryPath: "redirect",
 		},
 	},
