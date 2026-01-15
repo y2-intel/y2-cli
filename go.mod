@@ -15,7 +15,7 @@ require (
 	github.com/tidwall/pretty v1.2.1
 	github.com/urfave/cli-docs/v3 v3.0.0-alpha6
 	github.com/urfave/cli/v3 v3.3.2
-	github.com/y2-intel/y2-go v0.0.0
+	github.com/y2-intel/y2-go v0.2.0
 	golang.org/x/sys v0.38.0
 )
 
@@ -44,5 +44,3 @@ require (
 	golang.org/x/text v0.3.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/y2-intel/y2-go => github.com/stainless-sdks/y2-go v0.0.0-20251231161529-fc97e3d17838
