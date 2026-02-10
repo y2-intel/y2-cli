@@ -45,3 +45,5 @@ require (
 	golang.org/x/text v0.3.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/y2-intel/y2-go => github.com/stainless-sdks/y2-go v0.0.0-20251231161529-fc97e3d17838
