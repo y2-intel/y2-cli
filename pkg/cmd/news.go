@@ -16,8 +16,9 @@ import (
 )
 
 var newsList = cli.Command{
-	Name:  "list",
-	Usage: "Returns news items from the GloriaAI terminal cache. Supports filtering by\ntopics and pagination.",
+	Name:    "list",
+	Usage:   "Returns news items from the GloriaAI terminal cache. Supports filtering by\ntopics and pagination.",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "limit",
@@ -36,8 +37,9 @@ var newsList = cli.Command{
 }
 
 var newsGetRecaps = cli.Command{
-	Name:  "get-recaps",
-	Usage: "Returns AI-generated recap summaries for specified topics within a given\ntimeframe.",
+	Name:    "get-recaps",
+	Usage:   "Returns AI-generated recap summaries for specified topics within a given\ntimeframe.",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "timeframe",
@@ -58,6 +60,7 @@ var newsGetRecaps = cli.Command{
 var newsListFeeds = cli.Command{
 	Name:            "list-feeds",
 	Usage:           "Returns all available news feed topics with descriptions.",
+	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleNewsListFeeds,
 	HideHelpCommand: true,

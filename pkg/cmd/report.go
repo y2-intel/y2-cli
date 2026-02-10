@@ -16,8 +16,9 @@ import (
 )
 
 var reportsRetrieve = cli.Command{
-	Name:  "retrieve",
-	Usage: "Returns the full content of a specific intelligence report, including HTML\ncontent, sources, and audio metadata.",
+	Name:    "retrieve",
+	Usage:   "Returns the full content of a specific intelligence report, including HTML\ncontent, sources, and audio metadata.",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:     "report-id",
@@ -29,8 +30,9 @@ var reportsRetrieve = cli.Command{
 }
 
 var reportsList = cli.Command{
-	Name:  "list",
-	Usage: "Returns a list of reports for the user's subscribed profiles. Results are sorted\nby generation date (newest first).",
+	Name:    "list",
+	Usage:   "Returns a list of reports for the user's subscribed profiles. Results are sorted\nby generation date (newest first).",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "limit",
@@ -49,8 +51,9 @@ var reportsList = cli.Command{
 }
 
 var reportsRetrieveAudio = cli.Command{
-	Name:  "retrieve-audio",
-	Usage: "Returns audio file metadata or redirects to the CDN URL. Requires the\n`reports:audio` scope.",
+	Name:    "retrieve-audio",
+	Usage:   "Returns audio file metadata or redirects to the CDN URL. Requires the\n`reports:audio` scope.",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:     "report-id",
@@ -59,6 +62,7 @@ var reportsRetrieveAudio = cli.Command{
 		&requestflag.Flag[bool]{
 			Name:      "redirect",
 			Usage:     "If true, returns 302 redirect to audio CDN URL",
+			Default:   false,
 			QueryPath: "redirect",
 		},
 	},

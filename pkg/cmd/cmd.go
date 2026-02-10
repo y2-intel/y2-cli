@@ -13,6 +13,7 @@ import (
 
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
+	"github.com/y2-intel/y2-cli/internal/autocomplete"
 )
 
 var (
@@ -70,6 +71,7 @@ func init() {
 			{
 				Name:     "reports",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&reportsRetrieve,
 					&reportsList,
@@ -79,13 +81,19 @@ func init() {
 			{
 				Name:     "profiles",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
+					&profilesCreate,
+					&profilesUpdate,
 					&profilesList,
+					&profilesDelete,
+					&profilesPartialUpdate,
 				},
 			},
 			{
 				Name:     "news",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&newsList,
 					&newsGetRecaps,
@@ -120,10 +128,20 @@ func init() {
 					},
 				},
 			},
+			{
+				Name:            "__complete",
+				Hidden:          true,
+				HideHelpCommand: true,
+				Action:          autocomplete.ExecuteShellCompletion,
+			},
+			{
+				Name:            "@completion",
+				Hidden:          true,
+				HideHelpCommand: true,
+				Action:          autocomplete.OutputCompletionScript,
+			},
 		},
-		EnableShellCompletion:      true,
-		ShellCompletionCommandName: "@completion",
-		HideHelpCommand:            true,
+		HideHelpCommand: true,
 	}
 }
 
