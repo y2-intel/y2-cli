@@ -83,7 +83,11 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
+					&profilesCreate,
+					&profilesUpdate,
 					&profilesList,
+					&profilesDelete,
+					&profilesPartialUpdate,
 				},
 			},
 			{
