@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (2026-02-15)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/y2-intel/y2-cli/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* improved support for passing files for `any`-typed arguments ([e44bc50](https://github.com/y2-intel/y2-cli/commit/e44bc507920b6600f92ace2d6989acec3e7c2ecd))
+
+
+### Bug Fixes
+
+* preserve filename in content-disposition for file uploads ([17c30a1](https://github.com/y2-intel/y2-cli/commit/17c30a1a30620ba5bdb54f865299c1168f8a74d8))
+* prevent tests from hanging on streaming/paginated endpoints ([96d0dd3](https://github.com/y2-intel/y2-cli/commit/96d0dd3454809f5573d699d35dddb538b9f5f0ed))
+
 ## 0.4.0 (2026-02-10)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/y2-intel/y2-cli/compare/v0.3.0...v0.4.0)
