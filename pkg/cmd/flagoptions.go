@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/base64"
 	"encoding/json"
@@ -166,8 +165,7 @@ func embedFilesValue(v reflect.Value, embedStyle FileEmbedStyle) (reflect.Value,
 					}
 					return v, err
 				}
-				reader := bufio.NewReader(file)
-				return reflect.ValueOf(reader), nil
+				return reflect.ValueOf(file), nil
 			}
 		}
 		return v, nil
@@ -219,13 +217,16 @@ func flagOptions(
 	flagContents := requestflag.ExtractRequestContents(cmd)
 
 	var bodyData any
+	var pipeData []byte
 	if isInputPiped() && !stdinInUse {
 		var err error
-		pipeData, err := io.ReadAll(os.Stdin)
+		pipeData, err = io.ReadAll(os.Stdin)
 		if err != nil {
 			return nil, err
 		}
+	}
 
+	if len(pipeData) > 0 {
 		if err := yaml.Unmarshal(pipeData, &bodyData); err == nil {
 			if bodyMap, ok := bodyData.(map[string]any); ok {
 				if flagMap, ok := flagContents.Body.(map[string]any); ok {
@@ -284,7 +285,11 @@ func flagOptions(
 	}
 
 	// Add header parameters
-	if values, err := apiquery.MarshalWithSettings(flagContents.Headers, querySettings); err != nil {
+	headerSettings := apiquery.QuerySettings{
+		NestedFormat: apiquery.NestedQueryFormatDots,
+		ArrayFormat:  apiquery.ArrayQueryFormatRepeat,
+	}
+	if values, err := apiquery.MarshalWithSettings(flagContents.Headers, headerSettings); err != nil {
 		return nil, err
 	} else {
 		for k, vs := range values {

@@ -10,7 +10,7 @@ import (
 )
 
 func TestProfilesCreate(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "create",
@@ -51,7 +51,7 @@ func TestProfilesCreate(t *testing.T) {
 }
 
 func TestProfilesUpdate(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "update",
@@ -122,7 +122,7 @@ func TestProfilesUpdate(t *testing.T) {
 }
 
 func TestProfilesList(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "list",
@@ -130,7 +130,7 @@ func TestProfilesList(t *testing.T) {
 }
 
 func TestProfilesDelete(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "delete",
@@ -139,7 +139,7 @@ func TestProfilesDelete(t *testing.T) {
 }
 
 func TestProfilesPartialUpdate(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "partial-update",

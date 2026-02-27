@@ -9,7 +9,7 @@ import (
 )
 
 func TestNewsList(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "list",
@@ -19,7 +19,7 @@ func TestNewsList(t *testing.T) {
 }
 
 func TestNewsGetRecaps(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "get-recaps",
@@ -29,7 +29,7 @@ func TestNewsGetRecaps(t *testing.T) {
 }
 
 func TestNewsListFeeds(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "list-feeds",
