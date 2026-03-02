@@ -9,7 +9,7 @@ import (
 )
 
 func TestReportsRetrieve(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"reports", "retrieve",
@@ -18,7 +18,7 @@ func TestReportsRetrieve(t *testing.T) {
 }
 
 func TestReportsList(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"reports", "list",
@@ -28,7 +28,7 @@ func TestReportsList(t *testing.T) {
 }
 
 func TestReportsRetrieveAudio(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"reports", "retrieve-audio",
