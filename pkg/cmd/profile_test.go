@@ -14,6 +14,7 @@ func TestProfilesCreate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "create",
+		"--api-key", "string",
 		"--frequency", "daily",
 		"--name", "Cybersecurity Weekly",
 		"--schedule-time-of-day", "09:00",
@@ -83,6 +84,7 @@ func TestProfilesUpdate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "update",
+		"--api-key", "string",
 		"--profile-id", "k57abc123def456",
 		"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 		"--bluf-structure", "blufStructure",
@@ -154,6 +156,7 @@ func TestProfilesList(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "list",
+		"--api-key", "string",
 	)
 }
 
@@ -162,6 +165,7 @@ func TestProfilesDelete(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "delete",
+		"--api-key", "string",
 		"--profile-id", "k57abc123def456",
 	)
 }
@@ -171,6 +175,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "partial-update",
+		"--api-key", "string",
 		"--profile-id", "k57abc123def456",
 		"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 		"--bluf-structure", "blufStructure",

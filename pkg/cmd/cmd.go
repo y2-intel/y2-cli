@@ -14,6 +14,7 @@ import (
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 	"github.com/y2-intel/y2-cli/internal/autocomplete"
+	"github.com/y2-intel/y2-cli/internal/requestflag"
 )
 
 var (
@@ -65,6 +66,11 @@ func init() {
 			&cli.StringFlag{
 				Name:  "transform-error",
 				Usage: "The GJSON transformation for errors.",
+			},
+			&requestflag.Flag[string]{
+				Name:    "api-key",
+				Usage:   "API keys in format `y2_{64_hex_chars}`.\nCreate keys in the Y2 dashboard.\n",
+				Sources: cli.EnvVars("Y2_API_KEY"),
 			},
 		},
 		Commands: []*cli.Command{
