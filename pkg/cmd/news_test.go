@@ -13,6 +13,7 @@ func TestNewsList(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "list",
+		"--api-key", "string",
 		"--limit", "1",
 		"--topics", "crypto,ai_agents,bitcoin",
 	)
@@ -23,6 +24,7 @@ func TestNewsGetRecaps(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "get-recaps",
+		"--api-key", "string",
 		"--timeframe", "12h",
 		"--topics", "topics",
 	)
@@ -33,5 +35,6 @@ func TestNewsListFeeds(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"news", "list-feeds",
+		"--api-key", "string",
 	)
 }
