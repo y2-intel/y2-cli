@@ -110,6 +110,60 @@ func init() {
 				},
 			},
 			{
+				Name:     "webhooks",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&webhooksCreate,
+					&webhooksUpdate,
+					&webhooksList,
+					&webhooksDelete,
+					&webhooksTest,
+				},
+			},
+			{
+				Name:     "subscriptions",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&subscriptionsUpdateDelivery,
+				},
+			},
+			{
+				Name:     "osint",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintGetConflictIndicators,
+					&osintGetGpsJammingZones,
+					&osintGetMilitaryPosture,
+					&osintListAircraft,
+					&osintListEvents,
+					&osintListVessels,
+					&osintMapEvents,
+				},
+			},
+			{
+				Name:     "osint:countries",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintCountriesGetCountryInstabilityIndex,
+					&osintCountriesGetCountryNews,
+					&osintCountriesGetIntelligenceBrief,
+					&osintCountriesGetPredictionMarkets,
+					&osintCountriesGetStockMarketIndex,
+				},
+			},
+			{
+				Name:     "osint:sources",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintSourcesGetDataSourceHealth,
+				},
+			},
+			{
 				Name:            "@manpages",
 				Usage:           "Generate documentation for 'man'",
 				UsageText:       "y2 @manpages [-o y2.1] [--gzip]",
