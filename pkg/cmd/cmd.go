@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"bytes"
 	"compress/gzip"
 	"context"
 	"fmt"
@@ -14,18 +15,21 @@ import (
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 	"github.com/y2-intel/y2-cli/internal/autocomplete"
+	"github.com/y2-intel/y2-cli/internal/requestflag"
 )
 
 var (
-	Command *cli.Command
+	Command            *cli.Command
+	CommandErrorBuffer bytes.Buffer
 )
 
 func init() {
 	Command = &cli.Command{
-		Name:    "y2",
-		Usage:   "CLI for the y2 API",
-		Suggest: true,
-		Version: Version,
+		Name:      "y2",
+		Usage:     "CLI for the y2 API",
+		Suggest:   true,
+		Version:   Version,
+		ErrWriter: &CommandErrorBuffer,
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name:  "debug",
@@ -66,6 +70,11 @@ func init() {
 				Name:  "transform-error",
 				Usage: "The GJSON transformation for errors.",
 			},
+			&requestflag.Flag[string]{
+				Name:    "api-key",
+				Usage:   "API keys in format `y2_{64_hex_chars}`.\nCreate keys in the Y2 dashboard.\n",
+				Sources: cli.EnvVars("Y2_API_KEY"),
+			},
 		},
 		Commands: []*cli.Command{
 			{
@@ -98,6 +107,60 @@ func init() {
 					&newsList,
 					&newsGetRecaps,
 					&newsListFeeds,
+				},
+			},
+			{
+				Name:     "webhooks",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&webhooksCreate,
+					&webhooksUpdate,
+					&webhooksList,
+					&webhooksDelete,
+					&webhooksTest,
+				},
+			},
+			{
+				Name:     "subscriptions",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&subscriptionsUpdateDelivery,
+				},
+			},
+			{
+				Name:     "osint",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintGetConflictIndicators,
+					&osintGetGpsJammingZones,
+					&osintGetMilitaryPosture,
+					&osintListAircraft,
+					&osintListEvents,
+					&osintListVessels,
+					&osintMapEvents,
+				},
+			},
+			{
+				Name:     "osint:countries",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintCountriesGetCountryInstabilityIndex,
+					&osintCountriesGetCountryNews,
+					&osintCountriesGetIntelligenceBrief,
+					&osintCountriesGetPredictionMarkets,
+					&osintCountriesGetStockMarketIndex,
+				},
+			},
+			{
+				Name:     "osint:sources",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&osintSourcesGetDataSourceHealth,
 				},
 			},
 			{

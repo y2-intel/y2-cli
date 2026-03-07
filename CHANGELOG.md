@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.6.0 (2026-03-07)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/y2-intel/y2-cli/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* add `--max-items` flag for paginated/streaming endpoints ([f254b72](https://github.com/y2-intel/y2-cli/commit/f254b727ac184780483afac9b7403e95afbbb374))
+* add support for file downloads from binary response endpoints ([c9e0817](https://github.com/y2-intel/y2-cli/commit/c9e0817b325c807aedcabf1d98895a4ccb7c9f62))
+* **api:** api update ([4021b7f](https://github.com/y2-intel/y2-cli/commit/4021b7fc9cef06d81ac611e7f02c88c406250240))
+* **api:** api update ([8ec7d2e](https://github.com/y2-intel/y2-cli/commit/8ec7d2e4145038f958c1502eaadbdb8888617104))
+* **api:** manual updates ([0a53a3d](https://github.com/y2-intel/y2-cli/commit/0a53a3d76f097352befb0e92a59ebe3d3073ff8c))
+* improved documentation and flags for client options ([44793c9](https://github.com/y2-intel/y2-cli/commit/44793c9b7f26aee1b23ce7740a02548312cbf096))
+* support passing required body params through pipes ([e7b84e5](https://github.com/y2-intel/y2-cli/commit/e7b84e5d80f5736aed4110520d63316ffa842630))
+
+
+### Bug Fixes
+
+* avoid printing usage errors twice ([8e43a93](https://github.com/y2-intel/y2-cli/commit/8e43a9346ca82e452b324b2950f4597fcaf8c65d))
+* fix for encoding arrays with `any` type items ([de49267](https://github.com/y2-intel/y2-cli/commit/de492672ae4de8884c3a78b4773387a883056f38))
+
+
+### Chores
+
+* **internal:** codegen related update ([ba31010](https://github.com/y2-intel/y2-cli/commit/ba31010989300a6bc3d3ab34eddd25798cef67d4))
+* **internal:** codegen related update ([4cb61c2](https://github.com/y2-intel/y2-cli/commit/4cb61c290eaa5ea6dee208449ef0db77a7ad2d1a))
+* update SDK settings ([0ceb020](https://github.com/y2-intel/y2-cli/commit/0ceb020349160fbe48aea60e61700ab6871b27c3))
+* update SDK settings ([efa34af](https://github.com/y2-intel/y2-cli/commit/efa34af856a2827012a045cf3e857a349fbf5489))
+
 ## 0.5.0 (2026-02-27)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/y2-intel/y2-cli/compare/v0.4.0...v0.5.0)

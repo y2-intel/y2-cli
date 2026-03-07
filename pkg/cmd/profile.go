@@ -44,21 +44,46 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "topic",
 		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "audio-config",
+			Usage:    "Audio generation configuration",
+			BodyPath: "audioConfig",
+		},
 		&requestflag.Flag[string]{
 			Name:     "bluf-structure",
 			Usage:    "Custom BLUF report structure template",
 			BodyPath: "blufStructure",
 		},
 		&requestflag.Flag[string]{
+			Name:     "branding-template-id",
+			Usage:    "Branding template ID (Pro feature)",
+			BodyPath: "brandingTemplateId",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "budget-config",
+			Usage:    "Cost budget configuration",
+			BodyPath: "budgetConfig",
+		},
+		&requestflag.Flag[string]{
 			Name:     "custom-prompt",
 			Usage:    "Custom system prompt for the AI analyst",
 			BodyPath: "customPrompt",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "freshness-config",
+			Usage:    "Source freshness configuration",
+			BodyPath: "freshnessConfig",
 		},
 		&requestflag.Flag[bool]{
 			Name:     "is-community",
 			Usage:    "Whether this is a community (public) profile",
 			Default:  false,
 			BodyPath: "isCommunity",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "model-config",
+			Usage:    "AI model configuration",
+			BodyPath: "modelConfig",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "recursion-config",
@@ -74,15 +99,85 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 			Usage:    "Day of week for weekly/biweekly profiles",
 			BodyPath: "scheduleDayOfWeek",
 		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "search-config",
+			Usage:    "Web search configuration",
+			BodyPath: "searchConfig",
+		},
 		&requestflag.Flag[[]string]{
 			Name:     "tag",
 			Usage:    "Tags for categorization",
 			BodyPath: "tags",
 		},
+		&requestflag.Flag[any]{
+			Name:     "tool-config",
+			Usage:    "Tool configuration for report generation",
+			BodyPath: "toolConfig",
+		},
 	},
 	Action:          handleProfilesCreate,
 	HideHelpCommand: true,
 }, map[string][]requestflag.HasOuterFlag{
+	"audio-config": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "audio-config.enabled",
+			InnerField: "enabled",
+		},
+		&requestflag.InnerFlag[float64]{
+			Name:       "audio-config.speed",
+			InnerField: "speed",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "audio-config.voice-id",
+			InnerField: "voiceId",
+		},
+	},
+	"budget-config": {
+		&requestflag.InnerFlag[float64]{
+			Name:       "budget-config.alert-threshold",
+			InnerField: "alertThreshold",
+		},
+		&requestflag.InnerFlag[float64]{
+			Name:       "budget-config.max-cost-per-report",
+			InnerField: "maxCostPerReport",
+		},
+	},
+	"freshness-config": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "freshness-config.enabled",
+			InnerField: "enabled",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "freshness-config.max-age-ms",
+			InnerField: "maxAgeMs",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "freshness-config.prefer-recent-sources",
+			InnerField: "preferRecentSources",
+		},
+		&requestflag.InnerFlag[float64]{
+			Name:       "freshness-config.recency-weight",
+			InnerField: "recencyWeight",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "freshness-config.validate-links",
+			InnerField: "validateLinks",
+		},
+	},
+	"model-config": {
+		&requestflag.InnerFlag[int64]{
+			Name:       "model-config.max-output-tokens",
+			InnerField: "maxOutputTokens",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "model-config.model-id",
+			InnerField: "modelId",
+		},
+		&requestflag.InnerFlag[float64]{
+			Name:       "model-config.temperature",
+			InnerField: "temperature",
+		},
+	},
 	"recursion-config": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "recursion-config.enabled",
@@ -95,6 +190,32 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
 			InnerField: "strategy",
+		},
+	},
+	"search-config": {
+		&requestflag.InnerFlag[[]string]{
+			Name:       "search-config.exclude-domains",
+			InnerField: "excludeDomains",
+		},
+		&requestflag.InnerFlag[[]string]{
+			Name:       "search-config.include-domains",
+			InnerField: "includeDomains",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "search-config.max-results",
+			InnerField: "maxResults",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "search-config.search-depth",
+			InnerField: "searchDepth",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "search-config.time-range",
+			InnerField: "timeRange",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "search-config.topic",
+			InnerField: "topic",
 		},
 	},
 })

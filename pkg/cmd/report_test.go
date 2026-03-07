@@ -10,29 +10,35 @@ import (
 
 func TestReportsRetrieve(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"reports", "retrieve",
-		"--report-id", "k57abc123def456",
-	)
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t, "reports", "retrieve",
+			"--api-key", "string",
+			"--report-id", "k57abc123def456",
+		)
+	})
 }
 
 func TestReportsList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"reports", "list",
-		"--limit", "1",
-		"--profile-id", "k57abc123def456",
-	)
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t, "reports", "list",
+			"--api-key", "string",
+			"--limit", "1",
+			"--profile-id", "k57abc123def456",
+		)
+	})
 }
 
 func TestReportsRetrieveAudio(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"reports", "retrieve-audio",
-		"--report-id", "reportId",
-		"--redirect=true",
-	)
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t, "reports", "retrieve-audio",
+			"--api-key", "string",
+			"--report-id", "reportId",
+			"--redirect=true",
+		)
+	})
 }

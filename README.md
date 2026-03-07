@@ -47,14 +47,25 @@ y2 [resource] <command> [flags...]
 
 ```sh
 y2 reports list \
-  --limit 1 \
-  --profile-id k57abc123def456
+  --api-key 'My API Key'
 ```
 
 For details about specific commands, use the `--help` flag.
 
-### Global Flags
+### Environment variables
 
+| Environment variable | Description                             | Required |
+| -------------------- | --------------------------------------- | -------- |
+| `Y2_API_KEY`         | API keys in format `y2_{64_hex_chars}`. |
+
+Create keys in the Y2 dashboard.
+| yes |
+
+### Global flags
+
+- `--api-key` - API keys in format `y2_{64_hex_chars}`.
+  Create keys in the Y2 dashboard.
+  (can also be set with `Y2_API_KEY` env var)
 - `--help` - Show command line usage
 - `--debug` - Enable debug logging (includes HTTP request/response details)
 - `--version`, `-v` - Show the CLI version

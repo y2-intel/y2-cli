@@ -36,8 +36,8 @@ var reportsList = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "limit",
-			Usage:     "Maximum number of reports to return",
-			Default:   20,
+			Usage:     "Maximum number of reports to return (hard-capped at 5)",
+			Default:   5,
 			QueryPath: "limit",
 		},
 		&requestflag.Flag[string]{
