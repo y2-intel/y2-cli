@@ -10,12 +10,25 @@ import (
 
 func TestSubscriptionsUpdateDelivery(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"subscriptions", "update-delivery",
-		"--api-key", "string",
-		"--subscription-id", "subscriptionId",
-		"--delivery-method", "email",
-		"--webhook-config-id", "webhookConfigId",
-	)
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t, "subscriptions", "update-delivery",
+			"--api-key", "string",
+			"--subscription-id", "subscriptionId",
+			"--delivery-method", "email",
+			"--webhook-config-id", "webhookConfigId",
+		)
+	})
+
+	t.Run("piping data", func(t *testing.T) {
+		// Test piping YAML data over stdin
+		pipeData := []byte("" +
+			"deliveryMethod: email\n" +
+			"webhookConfigId: webhookConfigId\n")
+		mocktest.TestRunMockTestWithPipeAndFlags(
+			t, pipeData, "subscriptions", "update-delivery",
+			"--api-key", "string",
+			"--subscription-id", "subscriptionId",
+		)
+	})
 }
