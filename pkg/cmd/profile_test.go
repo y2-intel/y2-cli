@@ -42,6 +42,7 @@ func TestProfilesCreate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "create",
+		"--api-key", "string",
 		"--frequency", "daily",
 		"--name", "Cybersecurity Weekly",
 		"--schedule-time-of-day", "09:00",
@@ -113,6 +114,7 @@ func TestProfilesUpdate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "update",
+		"--api-key", "string",
 		"--profile-id", "k57abc123def456",
 		"--audio-config.enabled=true",
 		"--audio-config.speed", "0",
@@ -204,6 +206,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"profiles", "partial-update",
+		"--api-key", "string",
 		"--profile-id", "k57abc123def456",
 		"--audio-config.enabled=true",
 		"--audio-config.speed", "0",
