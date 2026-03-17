@@ -12,8 +12,9 @@ func TestReportsRetrieve(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "reports", "retrieve",
+			t,
 			"--api-key", "string",
+			"reports", "retrieve",
 			"--report-id", "k57abc123def456",
 		)
 	})
@@ -23,8 +24,9 @@ func TestReportsList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "reports", "list",
+			t,
 			"--api-key", "string",
+			"reports", "list",
 			"--limit", "1",
 			"--profile-id", "k57abc123def456",
 		)
@@ -35,8 +37,9 @@ func TestReportsRetrieveAudio(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "reports", "retrieve-audio",
+			t,
 			"--api-key", "string",
+			"reports", "retrieve-audio",
 			"--report-id", "reportId",
 			"--redirect=true",
 		)

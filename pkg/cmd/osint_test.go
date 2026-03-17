@@ -12,8 +12,9 @@ func TestOsintGetConflictIndicators(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "get-conflict-indicators",
+			t,
 			"--api-key", "string",
+			"osint", "get-conflict-indicators",
 			"--category", "seismic",
 			"--limit", "1",
 			"--region", "mena",
@@ -25,8 +26,9 @@ func TestOsintGetGpsJammingZones(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "get-gps-jamming-zones",
+			t,
 			"--api-key", "string",
+			"osint", "get-gps-jamming-zones",
 			"--limit", "1",
 			"--severity", "low",
 		)
@@ -37,8 +39,9 @@ func TestOsintGetMilitaryPosture(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "get-military-posture",
+			t,
 			"--api-key", "string",
+			"osint", "get-military-posture",
 			"--limit", "1",
 		)
 	})
@@ -48,8 +51,9 @@ func TestOsintListAircraft(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "list-aircraft",
+			t,
 			"--api-key", "string",
+			"osint", "list-aircraft",
 			"--limit", "1",
 			"--theater", "theater",
 		)
@@ -60,8 +64,9 @@ func TestOsintListEvents(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "list-events",
+			t,
 			"--api-key", "string",
+			"osint", "list-events",
 			"--category", "seismic",
 			"--limit", "1",
 			"--severity", "low",
@@ -73,8 +78,9 @@ func TestOsintListVessels(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "list-vessels",
+			t,
 			"--api-key", "string",
+			"osint", "list-vessels",
 			"--limit", "1",
 			"--region", "region",
 		)
@@ -85,8 +91,9 @@ func TestOsintMapEvents(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint", "map-events",
+			t,
 			"--api-key", "string",
+			"osint", "map-events",
 			"--limit", "1",
 			"--region", "mena",
 		)

@@ -12,8 +12,9 @@ func TestNewsList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "news", "list",
+			t,
 			"--api-key", "string",
+			"news", "list",
 			"--limit", "1",
 			"--topics", "crypto,ai_agents,bitcoin",
 		)
@@ -24,8 +25,9 @@ func TestNewsGetRecaps(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "news", "get-recaps",
+			t,
 			"--api-key", "string",
+			"news", "get-recaps",
 			"--timeframe", "12h",
 			"--topics", "topics",
 		)
@@ -36,8 +38,9 @@ func TestNewsListFeeds(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "news", "list-feeds",
+			t,
 			"--api-key", "string",
+			"news", "list-feeds",
 		)
 	})
 }
