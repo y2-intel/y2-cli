@@ -12,8 +12,9 @@ func TestWebhooksCreate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "webhooks", "create",
+			t,
 			"--api-key", "string",
+			"webhooks", "create",
 			"--name", "My Webhook",
 			"--url", "https://example.com/webhook",
 			"--headers", "{foo: string}",
@@ -30,8 +31,9 @@ func TestWebhooksCreate(t *testing.T) {
 			"  foo: string\n" +
 			"secret: secret\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "webhooks", "create",
+			t, pipeData,
 			"--api-key", "string",
+			"webhooks", "create",
 		)
 	})
 }
@@ -40,8 +42,9 @@ func TestWebhooksUpdate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "webhooks", "update",
+			t,
 			"--api-key", "string",
+			"webhooks", "update",
 			"--webhook-id", "webhookId",
 			"--headers", "{foo: string}",
 			"--is-active=true",
@@ -61,8 +64,9 @@ func TestWebhooksUpdate(t *testing.T) {
 			"secret: secret\n" +
 			"url: https://example.com\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "webhooks", "update",
+			t, pipeData,
 			"--api-key", "string",
+			"webhooks", "update",
 			"--webhook-id", "webhookId",
 		)
 	})
@@ -72,8 +76,9 @@ func TestWebhooksList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "webhooks", "list",
+			t,
 			"--api-key", "string",
+			"webhooks", "list",
 		)
 	})
 }
@@ -82,8 +87,9 @@ func TestWebhooksDelete(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "webhooks", "delete",
+			t,
 			"--api-key", "string",
+			"webhooks", "delete",
 			"--webhook-id", "webhookId",
 		)
 	})
@@ -93,8 +99,9 @@ func TestWebhooksTest(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "webhooks", "test",
+			t,
 			"--api-key", "string",
+			"webhooks", "test",
 			"--webhook-id", "webhookId",
 		)
 	})
