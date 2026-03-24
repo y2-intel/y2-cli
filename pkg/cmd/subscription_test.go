@@ -12,8 +12,9 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "subscriptions", "update-delivery",
+			t,
 			"--api-key", "string",
+			"subscriptions", "update-delivery",
 			"--subscription-id", "subscriptionId",
 			"--delivery-method", "email",
 			"--webhook-config-id", "webhookConfigId",
@@ -26,8 +27,9 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 			"deliveryMethod: email\n" +
 			"webhookConfigId: webhookConfigId\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "subscriptions", "update-delivery",
+			t, pipeData,
 			"--api-key", "string",
+			"subscriptions", "update-delivery",
 			"--subscription-id", "subscriptionId",
 		)
 	})

@@ -189,6 +189,7 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
+			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
 			InnerField: "strategy",
 		},
 	},
@@ -207,6 +208,7 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "search-config.search-depth",
+			Usage:      `Allowed values: "basic", "advanced".`,
 			InnerField: "searchDepth",
 		},
 		&requestflag.InnerFlag[string]{
@@ -379,6 +381,7 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
+			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
 			InnerField: "strategy",
 		},
 	},
@@ -397,6 +400,7 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "search-config.search-depth",
+			Usage:      `Allowed values: "basic", "advanced".`,
 			InnerField: "searchDepth",
 		},
 		&requestflag.InnerFlag[string]{
@@ -592,6 +596,7 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
+			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
 			InnerField: "strategy",
 		},
 	},
@@ -610,6 +615,7 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "search-config.search-depth",
+			Usage:      `Allowed values: "basic", "advanced".`,
 			InnerField: "searchDepth",
 		},
 		&requestflag.InnerFlag[string]{

@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-if [[ -n "$1" ]]; then
-  LOCAL_GO="$1"
-  shift
-else
-  LOCAL_GO=../y2-go
-fi
+# Mark the necessary Go modules as private to avoid Go's proxy
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/y2-intel/y2-go,github.com/stainless-sdks/y2-go"
 
-echo "==> Linking with local directory"
+REPLACEMENT="${1:-"../y2-go"}"
+echo "==> Replacing Go SDK with $REPLACEMENT"
+go mod edit -replace github.com/y2-intel/y2-go="$REPLACEMENT"
 go mod tidy -e
-go mod edit -replace github.com/y2-intel/y2-go="$LOCAL_GO"

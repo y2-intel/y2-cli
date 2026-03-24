@@ -13,8 +13,9 @@ func TestProfilesCreate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "create",
+			t,
 			"--api-key", "string",
+			"profiles", "create",
 			"--frequency", "daily",
 			"--name", "Cybersecurity Weekly",
 			"--schedule-time-of-day", "09:00",
@@ -42,8 +43,9 @@ func TestProfilesCreate(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "create",
+			t,
 			"--api-key", "string",
+			"profiles", "create",
 			"--frequency", "daily",
 			"--name", "Cybersecurity Weekly",
 			"--schedule-time-of-day", "09:00",
@@ -128,8 +130,9 @@ func TestProfilesCreate(t *testing.T) {
 			"  - string\n" +
 			"toolConfig: {}\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "profiles", "create",
+			t, pipeData,
 			"--api-key", "string",
+			"profiles", "create",
 		)
 	})
 }
@@ -138,8 +141,9 @@ func TestProfilesUpdate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "update",
+			t,
 			"--api-key", "string",
+			"profiles", "update",
 			"--profile-id", "k57abc123def456",
 			"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 			"--bluf-structure", "blufStructure",
@@ -168,8 +172,9 @@ func TestProfilesUpdate(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "update",
+			t,
 			"--api-key", "string",
+			"profiles", "update",
 			"--profile-id", "k57abc123def456",
 			"--audio-config.enabled=true",
 			"--audio-config.speed", "0",
@@ -255,8 +260,9 @@ func TestProfilesUpdate(t *testing.T) {
 			"  - string\n" +
 			"topic: topic\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "profiles", "update",
+			t, pipeData,
 			"--api-key", "string",
+			"profiles", "update",
 			"--profile-id", "k57abc123def456",
 		)
 	})
@@ -266,8 +272,9 @@ func TestProfilesList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "list",
+			t,
 			"--api-key", "string",
+			"profiles", "list",
 		)
 	})
 }
@@ -276,8 +283,9 @@ func TestProfilesDelete(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "delete",
+			t,
 			"--api-key", "string",
+			"profiles", "delete",
 			"--profile-id", "k57abc123def456",
 		)
 	})
@@ -287,8 +295,9 @@ func TestProfilesPartialUpdate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "partial-update",
+			t,
 			"--api-key", "string",
+			"profiles", "partial-update",
 			"--profile-id", "k57abc123def456",
 			"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 			"--bluf-structure", "blufStructure",
@@ -317,8 +326,9 @@ func TestProfilesPartialUpdate(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "profiles", "partial-update",
+			t,
 			"--api-key", "string",
+			"profiles", "partial-update",
 			"--profile-id", "k57abc123def456",
 			"--audio-config.enabled=true",
 			"--audio-config.speed", "0",
@@ -404,8 +414,9 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"  - string\n" +
 			"topic: topic\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "profiles", "partial-update",
+			t, pipeData,
 			"--api-key", "string",
+			"profiles", "partial-update",
 			"--profile-id", "k57abc123def456",
 		)
 	})

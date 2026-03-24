@@ -12,8 +12,9 @@ func TestOsintCountriesGetCountryInstabilityIndex(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint:countries", "get-country-instability-index",
+			t,
 			"--api-key", "string",
+			"osint:countries", "get-country-instability-index",
 			"--country-code", "UA",
 		)
 	})
@@ -23,8 +24,9 @@ func TestOsintCountriesGetCountryNews(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint:countries", "get-country-news",
+			t,
 			"--api-key", "string",
+			"osint:countries", "get-country-news",
 			"--country-code", "US",
 			"--limit", "1",
 		)
@@ -35,8 +37,9 @@ func TestOsintCountriesGetIntelligenceBrief(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint:countries", "get-intelligence-brief",
+			t,
 			"--api-key", "string",
+			"osint:countries", "get-intelligence-brief",
 			"--country-code", "US",
 		)
 	})
@@ -46,8 +49,9 @@ func TestOsintCountriesGetPredictionMarkets(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint:countries", "get-prediction-markets",
+			t,
 			"--api-key", "string",
+			"osint:countries", "get-prediction-markets",
 			"--country-code", "US",
 			"--limit", "1",
 		)
@@ -58,8 +62,9 @@ func TestOsintCountriesGetStockMarketIndex(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "osint:countries", "get-stock-market-index",
+			t,
 			"--api-key", "string",
+			"osint:countries", "get-stock-market-index",
 			"--country-code", "US",
 		)
 	})
