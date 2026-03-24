@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.7.0 (2026-03-24)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/y2-intel/y2-cli/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* add default description for enum CLI flags without an explicit description ([cae6e8e](https://github.com/y2-intel/y2-cli/commit/cae6e8e0cf7f370f7ad50bc7ac35fb4ba70f90b9))
+
+
+### Bug Fixes
+
+* avoid reading from stdin unless request body is form encoded or json ([0e4c7ff](https://github.com/y2-intel/y2-cli/commit/0e4c7ff960fc9c6ed75c35771e208c65ac693616))
+* better support passing client args in any position ([f39af5c](https://github.com/y2-intel/y2-cli/commit/f39af5c23769579b608d7acc1bd3d13a1b01a563))
+* cli no longer hangs when stdin is attached to a pipe with empty input ([6a14372](https://github.com/y2-intel/y2-cli/commit/6a143721fbb81b7cce43d0fb603c4bf2a89f829f))
+* fix for test cases with newlines in YAML and better error reporting ([e48f86f](https://github.com/y2-intel/y2-cli/commit/e48f86f78b72e6f328503427ce3979c509fc0dab))
+* improve linking behavior when developing on a branch not in the Go SDK ([31eaf83](https://github.com/y2-intel/y2-cli/commit/31eaf83bb47abcf4def03988f2c58e24a29db275))
+* improved workflow for developing on branches ([5ed568c](https://github.com/y2-intel/y2-cli/commit/5ed568c761725544ac69f02003ad1a783052788e))
+* no longer require an API key when building on production repos ([7f85ba7](https://github.com/y2-intel/y2-cli/commit/7f85ba7fecc326e1b5d9588272e79b5aa70cbbf3))
+* only set client options when the corresponding CLI flag or env var is explicitly set ([159a1d5](https://github.com/y2-intel/y2-cli/commit/159a1d51c58eaa04fb91f550388f269b3ab19c95))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([2e72da4](https://github.com/y2-intel/y2-cli/commit/2e72da41491d4480f2ab09d8cdc9657907bb87d8))
+* **internal:** tweak CI branches ([c581a0e](https://github.com/y2-intel/y2-cli/commit/c581a0e47b0be4c2a30d2a4a6b98ecb6c06874b5))
+* **internal:** update gitignore ([372e829](https://github.com/y2-intel/y2-cli/commit/372e829a974682f751ec67976577e3897b6343ba))
+
 ## 0.6.0 (2026-03-07)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/y2-intel/y2-cli/compare/v0.5.0...v0.6.0)
