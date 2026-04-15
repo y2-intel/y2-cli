@@ -197,8 +197,9 @@ func handleOsintGetConflictIndicators(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint get-conflict-indicators", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint get-conflict-indicators", obj, format, explicitFormat, transform)
 }
 
 func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error {
@@ -231,8 +232,9 @@ func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint get-gps-jamming-zones", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint get-gps-jamming-zones", obj, format, explicitFormat, transform)
 }
 
 func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error {
@@ -265,8 +267,9 @@ func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint get-military-posture", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint get-military-posture", obj, format, explicitFormat, transform)
 }
 
 func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
@@ -299,8 +302,9 @@ func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint list-aircraft", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint list-aircraft", obj, format, explicitFormat, transform)
 }
 
 func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
@@ -333,8 +337,9 @@ func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint list-events", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint list-events", obj, format, explicitFormat, transform)
 }
 
 func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
@@ -367,8 +372,9 @@ func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint list-vessels", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint list-vessels", obj, format, explicitFormat, transform)
 }
 
 func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
@@ -401,6 +407,7 @@ func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint map-events", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint map-events", obj, format, explicitFormat, transform)
 }

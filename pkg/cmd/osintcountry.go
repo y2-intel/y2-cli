@@ -128,8 +128,9 @@ func handleOsintCountriesGetCountryInstabilityIndex(ctx context.Context, cmd *cl
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint:countries get-country-instability-index", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-country-instability-index", obj, format, explicitFormat, transform)
 }
 
 func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) error {
@@ -170,8 +171,9 @@ func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint:countries get-country-news", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-country-news", obj, format, explicitFormat, transform)
 }
 
 func handleOsintCountriesGetIntelligenceBrief(ctx context.Context, cmd *cli.Command) error {
@@ -205,8 +207,9 @@ func handleOsintCountriesGetIntelligenceBrief(ctx context.Context, cmd *cli.Comm
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint:countries get-intelligence-brief", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-intelligence-brief", obj, format, explicitFormat, transform)
 }
 
 func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Command) error {
@@ -247,8 +250,9 @@ func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Comm
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint:countries get-prediction-markets", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-prediction-markets", obj, format, explicitFormat, transform)
 }
 
 func handleOsintCountriesGetStockMarketIndex(ctx context.Context, cmd *cli.Command) error {
@@ -282,6 +286,7 @@ func handleOsintCountriesGetStockMarketIndex(ctx context.Context, cmd *cli.Comma
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "osint:countries get-stock-market-index", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-stock-market-index", obj, format, explicitFormat, transform)
 }

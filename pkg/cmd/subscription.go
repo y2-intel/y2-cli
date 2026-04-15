@@ -78,6 +78,7 @@ func handleSubscriptionsUpdateDelivery(ctx context.Context, cmd *cli.Command) er
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "subscriptions update-delivery", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "subscriptions update-delivery", obj, format, explicitFormat, transform)
 }

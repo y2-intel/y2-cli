@@ -659,8 +659,9 @@ func handleProfilesCreate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "profiles create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "profiles create", obj, format, explicitFormat, transform)
 }
 
 func handleProfilesUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -701,8 +702,9 @@ func handleProfilesUpdate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "profiles update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "profiles update", obj, format, explicitFormat, transform)
 }
 
 func handleProfilesList(ctx context.Context, cmd *cli.Command) error {
@@ -733,8 +735,9 @@ func handleProfilesList(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "profiles list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "profiles list", obj, format, explicitFormat, transform)
 }
 
 func handleProfilesDelete(ctx context.Context, cmd *cli.Command) error {
@@ -768,8 +771,9 @@ func handleProfilesDelete(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "profiles delete", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "profiles delete", obj, format, explicitFormat, transform)
 }
 
 func handleProfilesPartialUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -810,6 +814,7 @@ func handleProfilesPartialUpdate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "profiles partial-update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "profiles partial-update", obj, format, explicitFormat, transform)
 }

@@ -101,8 +101,9 @@ func handleReportsRetrieve(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "reports retrieve", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "reports retrieve", obj, format, explicitFormat, transform)
 }
 
 func handleReportsList(ctx context.Context, cmd *cli.Command) error {
@@ -135,8 +136,9 @@ func handleReportsList(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "reports list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "reports list", obj, format, explicitFormat, transform)
 }
 
 func handleReportsRetrieveAudio(ctx context.Context, cmd *cli.Command) error {
@@ -177,6 +179,7 @@ func handleReportsRetrieveAudio(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "reports retrieve-audio", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "reports retrieve-audio", obj, format, explicitFormat, transform)
 }
