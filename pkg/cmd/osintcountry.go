@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
@@ -130,7 +129,12 @@ func handleOsintCountriesGetCountryInstabilityIndex(ctx context.Context, cmd *cl
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-country-instability-index", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint:countries get-country-instability-index",
+		Transform:      transform,
+	})
 }
 
 func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) error {
@@ -173,7 +177,12 @@ func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) e
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-country-news", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint:countries get-country-news",
+		Transform:      transform,
+	})
 }
 
 func handleOsintCountriesGetIntelligenceBrief(ctx context.Context, cmd *cli.Command) error {
@@ -209,7 +218,12 @@ func handleOsintCountriesGetIntelligenceBrief(ctx context.Context, cmd *cli.Comm
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-intelligence-brief", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint:countries get-intelligence-brief",
+		Transform:      transform,
+	})
 }
 
 func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Command) error {
@@ -252,7 +266,12 @@ func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Comm
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-prediction-markets", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint:countries get-prediction-markets",
+		Transform:      transform,
+	})
 }
 
 func handleOsintCountriesGetStockMarketIndex(ctx context.Context, cmd *cli.Command) error {
@@ -288,5 +307,10 @@ func handleOsintCountriesGetStockMarketIndex(ctx context.Context, cmd *cli.Comma
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint:countries get-stock-market-index", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint:countries get-stock-market-index",
+		Transform:      transform,
+	})
 }

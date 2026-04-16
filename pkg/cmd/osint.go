@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
@@ -199,7 +198,12 @@ func handleOsintGetConflictIndicators(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint get-conflict-indicators", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint get-conflict-indicators",
+		Transform:      transform,
+	})
 }
 
 func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error {
@@ -234,7 +238,12 @@ func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint get-gps-jamming-zones", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint get-gps-jamming-zones",
+		Transform:      transform,
+	})
 }
 
 func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error {
@@ -269,7 +278,12 @@ func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint get-military-posture", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint get-military-posture",
+		Transform:      transform,
+	})
 }
 
 func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
@@ -304,7 +318,12 @@ func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint list-aircraft", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint list-aircraft",
+		Transform:      transform,
+	})
 }
 
 func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
@@ -339,7 +358,12 @@ func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint list-events", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint list-events",
+		Transform:      transform,
+	})
 }
 
 func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
@@ -374,7 +398,12 @@ func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint list-vessels", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint list-vessels",
+		Transform:      transform,
+	})
 }
 
 func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
@@ -409,5 +438,10 @@ func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "osint map-events", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "osint map-events",
+		Transform:      transform,
+	})
 }
