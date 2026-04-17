@@ -100,6 +100,7 @@ func handleNewsList(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "news list",
 		Transform:      transform,
 	})
@@ -140,6 +141,7 @@ func handleNewsGetRecaps(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "news get-recaps",
 		Transform:      transform,
 	})
@@ -178,6 +180,7 @@ func handleNewsListFeeds(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "news list-feeds",
 		Transform:      transform,
 	})

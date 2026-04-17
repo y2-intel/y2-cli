@@ -132,6 +132,7 @@ func handleOsintCountriesGetCountryInstabilityIndex(ctx context.Context, cmd *cl
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:countries get-country-instability-index",
 		Transform:      transform,
 	})
@@ -180,6 +181,7 @@ func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:countries get-country-news",
 		Transform:      transform,
 	})
@@ -221,6 +223,7 @@ func handleOsintCountriesGetIntelligenceBrief(ctx context.Context, cmd *cli.Comm
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:countries get-intelligence-brief",
 		Transform:      transform,
 	})
@@ -269,6 +272,7 @@ func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Comm
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:countries get-prediction-markets",
 		Transform:      transform,
 	})
@@ -310,6 +314,7 @@ func handleOsintCountriesGetStockMarketIndex(ctx context.Context, cmd *cli.Comma
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:countries get-stock-market-index",
 		Transform:      transform,
 	})

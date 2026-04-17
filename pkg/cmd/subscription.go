@@ -82,6 +82,7 @@ func handleSubscriptionsUpdateDelivery(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "subscriptions update-delivery",
 		Transform:      transform,
 	})

@@ -55,6 +55,7 @@ func handleOsintSourcesGetDataSourceHealth(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint:sources get-data-source-health",
 		Transform:      transform,
 	})

@@ -201,6 +201,7 @@ func handleOsintGetConflictIndicators(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint get-conflict-indicators",
 		Transform:      transform,
 	})
@@ -241,6 +242,7 @@ func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint get-gps-jamming-zones",
 		Transform:      transform,
 	})
@@ -281,6 +283,7 @@ func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint get-military-posture",
 		Transform:      transform,
 	})
@@ -321,6 +324,7 @@ func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint list-aircraft",
 		Transform:      transform,
 	})
@@ -361,6 +365,7 @@ func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint list-events",
 		Transform:      transform,
 	})
@@ -401,6 +406,7 @@ func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint list-vessels",
 		Transform:      transform,
 	})
@@ -441,6 +447,7 @@ func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "osint map-events",
 		Transform:      transform,
 	})
