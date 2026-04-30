@@ -227,8 +227,9 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "profile-id",
-			Required: true,
+			Name:      "profile-id",
+			Required:  true,
+			PathParam: "profileId",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "audio-config",
@@ -428,8 +429,9 @@ var profilesDelete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "profile-id",
-			Required: true,
+			Name:      "profile-id",
+			Required:  true,
+			PathParam: "profileId",
 		},
 	},
 	Action:          handleProfilesDelete,
@@ -442,8 +444,9 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "profile-id",
-			Required: true,
+			Name:      "profile-id",
+			Required:  true,
+			PathParam: "profileId",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "audio-config",
@@ -636,8 +639,6 @@ func handleProfilesCreate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.ProfileNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -648,6 +649,8 @@ func handleProfilesCreate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.ProfileNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -680,8 +683,6 @@ func handleProfilesUpdate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.ProfileUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -692,6 +693,8 @@ func handleProfilesUpdate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.ProfileUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -810,8 +813,6 @@ func handleProfilesPartialUpdate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.ProfilePartialUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -822,6 +823,8 @@ func handleProfilesPartialUpdate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.ProfilePartialUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

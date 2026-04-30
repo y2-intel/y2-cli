@@ -52,8 +52,9 @@ var webhooksUpdate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "webhook-id",
-			Required: true,
+			Name:      "webhook-id",
+			Required:  true,
+			PathParam: "webhookId",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "headers",
@@ -95,8 +96,9 @@ var webhooksDelete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "webhook-id",
-			Required: true,
+			Name:      "webhook-id",
+			Required:  true,
+			PathParam: "webhookId",
 		},
 	},
 	Action:          handleWebhooksDelete,
@@ -109,8 +111,9 @@ var webhooksTest = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "webhook-id",
-			Required: true,
+			Name:      "webhook-id",
+			Required:  true,
+			PathParam: "webhookId",
 		},
 	},
 	Action:          handleWebhooksTest,
@@ -125,8 +128,6 @@ func handleWebhooksCreate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.WebhookNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -137,6 +138,8 @@ func handleWebhooksCreate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.WebhookNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -169,8 +172,6 @@ func handleWebhooksUpdate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.WebhookUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -181,6 +182,8 @@ func handleWebhooksUpdate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.WebhookUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

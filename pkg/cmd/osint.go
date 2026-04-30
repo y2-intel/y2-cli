@@ -174,8 +174,6 @@ func handleOsintGetConflictIndicators(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintGetConflictIndicatorsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -186,6 +184,8 @@ func handleOsintGetConflictIndicators(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintGetConflictIndicatorsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -215,8 +215,6 @@ func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintGetGpsJammingZonesParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -227,6 +225,8 @@ func handleOsintGetGpsJammingZones(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintGetGpsJammingZonesParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -256,8 +256,6 @@ func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintGetMilitaryPostureParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -268,6 +266,8 @@ func handleOsintGetMilitaryPosture(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintGetMilitaryPostureParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -297,8 +297,6 @@ func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintListAircraftParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -309,6 +307,8 @@ func handleOsintListAircraft(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintListAircraftParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -338,8 +338,6 @@ func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintListEventsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -350,6 +348,8 @@ func handleOsintListEvents(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintListEventsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -379,8 +379,6 @@ func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintListVesselsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -391,6 +389,8 @@ func handleOsintListVessels(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintListVesselsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -420,8 +420,6 @@ func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintMapEventsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -432,6 +430,8 @@ func handleOsintMapEvents(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintMapEventsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

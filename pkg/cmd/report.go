@@ -20,8 +20,9 @@ var reportsRetrieve = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "report-id",
-			Required: true,
+			Name:      "report-id",
+			Required:  true,
+			PathParam: "reportId",
 		},
 	},
 	Action:          handleReportsRetrieve,
@@ -55,8 +56,9 @@ var reportsRetrieveAudio = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "report-id",
-			Required: true,
+			Name:      "report-id",
+			Required:  true,
+			PathParam: "reportId",
 		},
 		&requestflag.Flag[bool]{
 			Name:      "redirect",
@@ -119,8 +121,6 @@ func handleReportsList(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.ReportListParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -131,6 +131,8 @@ func handleReportsList(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.ReportListParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -163,8 +165,6 @@ func handleReportsRetrieveAudio(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.ReportGetAudioParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -175,6 +175,8 @@ func handleReportsRetrieveAudio(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := y2.ReportGetAudioParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

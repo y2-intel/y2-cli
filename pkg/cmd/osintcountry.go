@@ -20,8 +20,9 @@ var osintCountriesGetCountryInstabilityIndex = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "country-code",
-			Required: true,
+			Name:      "country-code",
+			Required:  true,
+			PathParam: "countryCode",
 		},
 	},
 	Action:          handleOsintCountriesGetCountryInstabilityIndex,
@@ -34,8 +35,9 @@ var osintCountriesGetCountryNews = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "country-code",
-			Required: true,
+			Name:      "country-code",
+			Required:  true,
+			PathParam: "countryCode",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
@@ -54,8 +56,9 @@ var osintCountriesGetIntelligenceBrief = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "country-code",
-			Required: true,
+			Name:      "country-code",
+			Required:  true,
+			PathParam: "countryCode",
 		},
 	},
 	Action:          handleOsintCountriesGetIntelligenceBrief,
@@ -68,8 +71,9 @@ var osintCountriesGetPredictionMarkets = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "country-code",
-			Required: true,
+			Name:      "country-code",
+			Required:  true,
+			PathParam: "countryCode",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
@@ -88,8 +92,9 @@ var osintCountriesGetStockMarketIndex = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "country-code",
-			Required: true,
+			Name:      "country-code",
+			Required:  true,
+			PathParam: "countryCode",
 		},
 	},
 	Action:          handleOsintCountriesGetStockMarketIndex,
@@ -149,8 +154,6 @@ func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) e
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintCountryGetCountryNewsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -161,6 +164,8 @@ func handleOsintCountriesGetCountryNews(ctx context.Context, cmd *cli.Command) e
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintCountryGetCountryNewsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -240,8 +245,6 @@ func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Comm
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.OsintCountryGetPredictionMarketsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -252,6 +255,8 @@ func handleOsintCountriesGetPredictionMarkets(ctx context.Context, cmd *cli.Comm
 	if err != nil {
 		return err
 	}
+
+	params := y2.OsintCountryGetPredictionMarketsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

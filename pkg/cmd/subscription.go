@@ -20,8 +20,9 @@ var subscriptionsUpdateDelivery = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "subscription-id",
-			Required: true,
+			Name:      "subscription-id",
+			Required:  true,
+			PathParam: "subscriptionId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "delivery-method",
@@ -50,8 +51,6 @@ func handleSubscriptionsUpdateDelivery(ctx context.Context, cmd *cli.Command) er
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := y2.SubscriptionUpdateDeliveryParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -62,6 +61,8 @@ func handleSubscriptionsUpdateDelivery(ctx context.Context, cmd *cli.Command) er
 	if err != nil {
 		return err
 	}
+
+	params := y2.SubscriptionUpdateDeliveryParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
