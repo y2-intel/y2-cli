@@ -63,7 +63,7 @@ var osintGetGpsJammingZones = cli.Command{
 
 var osintGetMilitaryPosture = cli.Command{
 	Name:    "get-military-posture",
-	Usage:   "Returns military posture assessments for monitored theaters, based on detected\nmilitary aircraft activity from the OpenSky Network. Each theater has a posture\nlevel (normal, elevated, critical) and aircraft breakdown by type.",
+	Usage:   "Returns military posture assessments for monitored theaters, based on detected\nmilitary aircraft activity from the Wingbits ADS-B network. Each theater has a\nposture level (normal, elevated, critical) and aircraft breakdown by type.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -79,7 +79,7 @@ var osintGetMilitaryPosture = cli.Command{
 
 var osintListAircraft = cli.Command{
 	Name:    "list-aircraft",
-	Usage:   "Returns tracked military aircraft positions from the OpenSky Network, filtered\nand classified by type (tanker, AWACS, fighter, etc.).",
+	Usage:   "Returns tracked military aircraft positions from the Wingbits ADS-B network,\nfiltered and classified by type (tanker, AWACS, fighter, etc.).",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -90,7 +90,7 @@ var osintListAircraft = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "theater",
-			Usage:     `Filter by theater ID (e.g. "iran", "taiwan", "baltic")`,
+			Usage:     `Filter by theater ID (e.g. "iran", "taiwan", "blacksea", "scs")`,
 			QueryPath: "theater",
 		},
 	},

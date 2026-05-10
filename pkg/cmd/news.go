@@ -27,7 +27,7 @@ var newsList = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "topics",
-			Usage:     "Comma-separated list of topics to filter by.\nValid topics: ai, ai_agents, aptos, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, ondo, perps, ripple, rwa, solana, tech, virtuals.\nDefault: crypto, ai_agents, macro, bitcoin, ethereum, tech\n",
+			Usage:     "Comma-separated list of topics to filter by.\nValid topics: ai, ai_agents, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, on_chain_whale, perps, ripple, rwa, solana, tech, token_listings, virtuals.\nDefault: crypto, ai_agents, macro, bitcoin, ethereum, tech\n",
 			QueryPath: "topics",
 		},
 	},
@@ -48,7 +48,7 @@ var newsGetRecaps = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "topics",
-			Usage:     "Comma-separated list of topics.\nValid topics: ai, ai_agents, aptos, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, ondo, perps, ripple, rwa, solana, tech, virtuals\n",
+			Usage:     "Comma-separated list of topics.\nValid topics: ai, ai_agents, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, on_chain_whale, perps, ripple, rwa, solana, tech, token_listings, virtuals\n",
 			QueryPath: "topics",
 		},
 	},
