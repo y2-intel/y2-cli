@@ -55,7 +55,7 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "branding-template-id",
-			Usage:    "Branding template ID (Pro feature)",
+			Usage:    "Branding template ID (Lite and Pro feature)",
 			BodyPath: "brandingTemplateId",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -241,7 +241,7 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "branding-template-id",
-			Usage:    "Branding template ID (Pro feature)",
+			Usage:    "Branding template ID (Lite and Pro feature)",
 			BodyPath: "brandingTemplateId",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -458,7 +458,7 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "branding-template-id",
-			Usage:    "Branding template ID (Pro feature)",
+			Usage:    "Branding template ID (Lite and Pro feature)",
 			BodyPath: "brandingTemplateId",
 		},
 		&requestflag.Flag[map[string]any]{

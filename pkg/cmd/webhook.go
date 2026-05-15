@@ -16,7 +16,7 @@ import (
 
 var webhooksCreate = cli.Command{
 	Name:    "create",
-	Usage:   "Creates a new webhook configuration. Requires an active Pro subscription. The\nwebhook URL must be HTTPS and pass SSRF security validation.",
+	Usage:   "Creates a new webhook configuration. Requires an active Lite or Pro\nsubscription. The webhook URL must be HTTPS and pass SSRF security validation.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
