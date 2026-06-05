@@ -17,6 +17,7 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 			"subscriptions", "update-delivery",
 			"--subscription-id", "subscriptionId",
 			"--delivery-method", "email",
+			"--email-audience", "individual",
 			"--webhook-config-id", "webhookConfigId",
 		)
 	})
@@ -25,6 +26,7 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("" +
 			"deliveryMethod: email\n" +
+			"emailAudience: individual\n" +
 			"webhookConfigId: webhookConfigId\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,

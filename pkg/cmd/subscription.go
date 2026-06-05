@@ -16,7 +16,7 @@ import (
 
 var subscriptionsUpdateDelivery = cli.Command{
 	Name:    "update-delivery",
-	Usage:   "Changes the delivery method for a subscription. When setting to `webhook`, a\nvalid `webhookConfigId` must be provided. The webhook must be active.",
+	Usage:   "Changes the delivery method for a subscription. When setting to `webhook`, a\nvalid `webhookConfigId` must be provided. The webhook must be active. Set\n`emailAudience` to `workspace` to email active workspace members on workspace\nplans that support member seats.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -29,6 +29,11 @@ var subscriptionsUpdateDelivery = cli.Command{
 			Usage:    "Subscription delivery method",
 			Required: true,
 			BodyPath: "deliveryMethod",
+		},
+		&requestflag.Flag[string]{
+			Name:     "email-audience",
+			Usage:    "Email recipients for email-capable subscription delivery",
+			BodyPath: "emailAudience",
 		},
 		&requestflag.Flag[string]{
 			Name:     "webhook-config-id",
