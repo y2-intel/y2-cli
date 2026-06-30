@@ -16,7 +16,7 @@ import (
 
 var newsList = cli.Command{
 	Name:    "list",
-	Usage:   "Returns news items from the GloriaAI terminal cache. Supports filtering by\ntopics and pagination.",
+	Usage:   "Returns news items from the Y2 News Terminal cache. Supports filtering by topics\nand pagination.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
