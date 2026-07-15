@@ -16,7 +16,7 @@ import (
 
 var reportsRetrieve = cli.Command{
 	Name:    "retrieve",
-	Usage:   "Returns the full content of a specific intelligence report, including HTML\ncontent, sources, and audio metadata.",
+	Usage:   "Returns a report's full HTML content, sources, and audio metadata.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -31,7 +31,7 @@ var reportsRetrieve = cli.Command{
 
 var reportsList = cli.Command{
 	Name:    "list",
-	Usage:   "Returns a list of reports for the user's subscribed profiles. Results are sorted\nby generation date (newest first).",
+	Usage:   "Lists reports for the user's subscribed profiles by generation date, newest\nfirst.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -62,7 +62,7 @@ var reportsRetrieveAudio = cli.Command{
 		},
 		&requestflag.Flag[bool]{
 			Name:      "redirect",
-			Usage:     "If true, returns 302 redirect to audio CDN URL",
+			Usage:     "When true, redirects with `302` to the audio CDN URL",
 			Default:   false,
 			QueryPath: "redirect",
 		},

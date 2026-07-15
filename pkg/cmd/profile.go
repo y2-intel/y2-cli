@@ -16,7 +16,7 @@ import (
 
 var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 	Name:    "create",
-	Usage:   "Creates a new intelligence profile with the specified configuration. The profile\nwill be owned by the authenticated user and start with `active` status.",
+	Usage:   "Creates an `active` intelligence profile owned by the authenticated user with\nthe supplied configuration.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -223,7 +223,7 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 
 var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 	Name:    "update",
-	Usage:   "Replaces all mutable fields of an existing intelligence profile. Only profiles\nowned by the authenticated user can be updated.",
+	Usage:   "Replaces every mutable field on a profile owned by the authenticated user.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -416,7 +416,7 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 
 var profilesList = cli.Command{
 	Name:            "list",
-	Usage:           "Returns a list of intelligence profiles the user is subscribed to, including\nsubscription status and delivery preferences.",
+	Usage:           "Lists the user's subscribed profiles with subscription status and delivery\npreferences.",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleProfilesList,
@@ -425,7 +425,7 @@ var profilesList = cli.Command{
 
 var profilesDelete = cli.Command{
 	Name:    "delete",
-	Usage:   "Permanently deletes an intelligence profile and all associated subscriptions.\nOnly profiles owned by the authenticated user can be deleted. This action cannot\nbe undone.",
+	Usage:   "Permanently deletes a profile owned by the authenticated user and all its\nsubscriptions. This action cannot be undone.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -440,7 +440,7 @@ var profilesDelete = cli.Command{
 
 var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 	Name:    "partial-update",
-	Usage:   "Partially updates an existing intelligence profile. Only the fields included in\nthe request body will be modified; all other fields remain unchanged. Only\nprofiles owned by the authenticated user can be updated.",
+	Usage:   "Updates supplied mutable fields on a profile owned by the authenticated user.\nOmitted fields remain unchanged.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{

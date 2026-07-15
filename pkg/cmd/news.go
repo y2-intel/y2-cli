@@ -16,7 +16,7 @@ import (
 
 var newsList = cli.Command{
 	Name:    "list",
-	Usage:   "Returns news items from the Y2 News Terminal cache. Supports filtering by topics\nand pagination.",
+	Usage:   "Lists cached Y2 News Terminal items with topic filters and pagination.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -37,7 +37,7 @@ var newsList = cli.Command{
 
 var newsGetRecaps = cli.Command{
 	Name:    "get-recaps",
-	Usage:   "Returns AI-generated recap summaries for specified topics within a given\ntimeframe.",
+	Usage:   "Lists AI-generated recaps for selected topics and timeframe.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -58,7 +58,7 @@ var newsGetRecaps = cli.Command{
 
 var newsListFeeds = cli.Command{
 	Name:            "list-feeds",
-	Usage:           "Returns all available news feed topics with descriptions.",
+	Usage:           "Lists news feed topics and descriptions.",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleNewsListFeeds,

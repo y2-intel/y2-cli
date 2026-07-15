@@ -16,7 +16,7 @@ import (
 
 var osintCountriesGetCountryInstabilityIndex = cli.Command{
 	Name:    "get-country-instability-index",
-	Usage:   "Returns the per-country Conflict Indicators Index (CII) score, including\nbaseline, delta, and component breakdown.",
+	Usage:   "Returns a country's Conflict Indicators Index (CII) score, baseline, delta, and\ncomponents.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -31,7 +31,7 @@ var osintCountriesGetCountryInstabilityIndex = cli.Command{
 
 var osintCountriesGetCountryNews = cli.Command{
 	Name:    "get-country-news",
-	Usage:   "Returns recent news items specific to a given country, sourced from the OSINT\nevent pipeline.",
+	Usage:   "Returns recent country news from the OSINT event pipeline.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -52,7 +52,7 @@ var osintCountriesGetCountryNews = cli.Command{
 
 var osintCountriesGetIntelligenceBrief = cli.Command{
 	Name:    "get-intelligence-brief",
-	Usage:   "Returns an AI-generated intelligence brief for a specific country. Briefs are\ngenerated periodically and cached.",
+	Usage:   "Returns a periodically generated, cached intelligence brief for a country.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -67,7 +67,7 @@ var osintCountriesGetIntelligenceBrief = cli.Command{
 
 var osintCountriesGetPredictionMarkets = cli.Command{
 	Name:    "get-prediction-markets",
-	Usage:   "Returns prediction market data for a specific country, including probabilities\nand trading volumes.",
+	Usage:   "Returns prediction-market probabilities and trading volumes for a country.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -88,7 +88,7 @@ var osintCountriesGetPredictionMarkets = cli.Command{
 
 var osintCountriesGetStockMarketIndex = cli.Command{
 	Name:    "get-stock-market-index",
-	Usage:   "Returns the primary stock market index data for a specific country, including\nweekly change and currency.",
+	Usage:   "Returns a country's primary stock index, weekly change, and currency.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{

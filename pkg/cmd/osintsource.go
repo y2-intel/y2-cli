@@ -15,7 +15,7 @@ import (
 
 var osintSourcesGetDataSourceHealth = cli.Command{
 	Name:            "get-data-source-health",
-	Usage:           "Returns the health status of all OSINT data sources, including circuit breaker\nstate and failure counts.",
+	Usage:           "Lists OSINT source health, circuit-breaker state, and failure counts.",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleOsintSourcesGetDataSourceHealth,

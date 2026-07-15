@@ -16,7 +16,7 @@ import (
 
 var osintGetConflictIndicators = cli.Command{
 	Name:    "get-conflict-indicators",
-	Usage:   "Returns the Conflict Indicators Index (CII) values. Each item represents a\nconflict indicator with a score from 0-100 and a delta showing recent change.\nSupports filtering by region and category.",
+	Usage:   "Lists Conflict Indicators Index (CII) values with 0–100 scores and recent-change\ndeltas. Supports region and category filters.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -42,7 +42,7 @@ var osintGetConflictIndicators = cli.Command{
 
 var osintGetGpsJammingZones = cli.Command{
 	Name:    "get-gps-jamming-zones",
-	Usage:   "Returns GPS interference zones detected via ADS-B navigation accuracy\ndegradation analysis, aggregated into H3 hex cells.",
+	Usage:   "Lists GPS interference zones inferred from ADS-B navigation-accuracy degradation\nand aggregated into H3 cells.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -63,7 +63,7 @@ var osintGetGpsJammingZones = cli.Command{
 
 var osintGetMilitaryPosture = cli.Command{
 	Name:    "get-military-posture",
-	Usage:   "Returns military posture assessments for monitored theaters, based on detected\nmilitary aircraft activity from the Wingbits ADS-B network. Each theater has a\nposture level (normal, elevated, critical) and aircraft breakdown by type.",
+	Usage:   "Lists theater posture assessments based on Wingbits ADS-B military aircraft\nactivity. Each includes a `normal`, `elevated`, or `critical` posture and\naircraft counts by type.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -79,7 +79,7 @@ var osintGetMilitaryPosture = cli.Command{
 
 var osintListAircraft = cli.Command{
 	Name:    "list-aircraft",
-	Usage:   "Returns tracked military aircraft positions from the Wingbits ADS-B network,\nfiltered and classified by type (tanker, AWACS, fighter, etc.).",
+	Usage:   "Lists Wingbits ADS-B military aircraft positions, classified by type such as\ntanker, AWACS, or fighter.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -100,7 +100,7 @@ var osintListAircraft = cli.Command{
 
 var osintListEvents = cli.Command{
 	Name:    "list-events",
-	Usage:   "Returns OSINT threat events from the Situation Room. Supports filtering by\ncategory, severity, region, and country.",
+	Usage:   "Lists Situation Room threat events. Supports category and severity filters.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -126,7 +126,7 @@ var osintListEvents = cli.Command{
 
 var osintListVessels = cli.Command{
 	Name:    "list-vessels",
-	Usage:   "Returns naval vessel positions sourced from USNI fleet tracker data, including\ncarrier strike groups and individual warships.",
+	Usage:   "Lists USNI fleet-tracker positions for carrier strike groups and warships.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
@@ -147,7 +147,7 @@ var osintListVessels = cli.Command{
 
 var osintMapEvents = cli.Command{
 	Name:    "map-events",
-	Usage:   "Returns OSINT events with geographic coordinates for map display. Events without\ncoordinates are excluded.",
+	Usage:   "Lists geolocated OSINT events for map display. Excludes events without\ncoordinates.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{

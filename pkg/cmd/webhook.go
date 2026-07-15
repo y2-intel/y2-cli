@@ -16,7 +16,7 @@ import (
 
 var webhooksCreate = cli.Command{
 	Name:    "create",
-	Usage:   "Creates a new webhook configuration. Requires a paid workspace plan with webhook\naccess. The webhook URL must be HTTPS and pass SSRF security validation.",
+	Usage:   "Creates a webhook configuration. Requires a paid workspace plan with webhook\naccess. The URL must use HTTPS and pass SSRF validation.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -48,7 +48,7 @@ var webhooksCreate = cli.Command{
 
 var webhooksUpdate = cli.Command{
 	Name:    "update",
-	Usage:   "Updates an existing webhook configuration. All fields are optional. Only\nprovided fields will be updated.",
+	Usage:   "Updates supplied fields on a webhook configuration. Omitted fields remain\nunchanged.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -83,7 +83,7 @@ var webhooksUpdate = cli.Command{
 
 var webhooksList = cli.Command{
 	Name:            "list",
-	Usage:           "Returns all webhook configurations for the authenticated user. Secrets are\nmasked in the response.",
+	Usage:           "Lists the authenticated user's webhook configurations. Masks secrets.",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleWebhooksList,
@@ -92,7 +92,7 @@ var webhooksList = cli.Command{
 
 var webhooksDelete = cli.Command{
 	Name:    "delete",
-	Usage:   "Deletes a webhook configuration. Fails with 409 if the webhook is currently in\nuse by any subscriptions.",
+	Usage:   "Deletes a webhook configuration. Returns `409` if any subscription uses it.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -107,7 +107,7 @@ var webhooksDelete = cli.Command{
 
 var webhooksTest = cli.Command{
 	Name:    "test",
-	Usage:   "Sends a test payload to the webhook URL and returns the result. Returns 422 if\nthe webhook endpoint responds with an error.",
+	Usage:   "Sends a test payload to the webhook URL. Returns `422` if the endpoint responds\nwith an error.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
