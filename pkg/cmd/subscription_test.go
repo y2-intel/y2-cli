@@ -15,10 +15,10 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"subscriptions", "update-delivery",
-			"--subscription-id", "subscriptionId",
+			"--subscription-id", "sub_210b9798eb53baa4e69d31c1",
 			"--delivery-method", "email",
 			"--email-audience", "individual",
-			"--webhook-config-id", "webhookConfigId",
+			"--webhook-config-id", "whk_210b9798eb53baa4e69d31c1",
 		)
 	})
 
@@ -27,12 +27,12 @@ func TestSubscriptionsUpdateDelivery(t *testing.T) {
 		pipeData := []byte("" +
 			"deliveryMethod: email\n" +
 			"emailAudience: individual\n" +
-			"webhookConfigId: webhookConfigId\n")
+			"webhookConfigId: whk_210b9798eb53baa4e69d31c1\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",
 			"subscriptions", "update-delivery",
-			"--subscription-id", "subscriptionId",
+			"--subscription-id", "sub_210b9798eb53baa4e69d31c1",
 		)
 	})
 }

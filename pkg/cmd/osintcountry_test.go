@@ -28,6 +28,8 @@ func TestOsintCountriesGetCountryNews(t *testing.T) {
 			"--api-key", "string",
 			"osint:countries", "get-country-news",
 			"--country-code", "US",
+			"--cursor", "cursor",
+			"--format", "json",
 			"--limit", "1",
 		)
 	})
@@ -53,6 +55,8 @@ func TestOsintCountriesGetPredictionMarkets(t *testing.T) {
 			"--api-key", "string",
 			"osint:countries", "get-prediction-markets",
 			"--country-code", "US",
+			"--cursor", "cursor",
+			"--format", "json",
 			"--limit", "1",
 		)
 	})

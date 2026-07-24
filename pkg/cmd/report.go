@@ -16,13 +16,28 @@ import (
 
 var reportsRetrieve = cli.Command{
 	Name:    "retrieve",
-	Usage:   "Returns a report's full HTML content, sources, and audio metadata.",
+	Usage:   "Returns a compact report by default. Use bounded `include` values or\n`view=agent`; request `text/markdown` for the canonical Markdown representation.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "report-id",
 			Required:  true,
 			PathParam: "reportId",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Explicit representation override.",
+			QueryPath: "format",
+		},
+		&requestflag.Flag[string]{
+			Name:      "include",
+			Usage:     "Comma-separated `content,sources,signals,graph,audio` expansions.",
+			QueryPath: "include",
+		},
+		&requestflag.Flag[string]{
+			Name:      "view",
+			Usage:     "Compact projection optimized for grounded agent context.",
+			QueryPath: "view",
 		},
 	},
 	Action:          handleReportsRetrieve,
@@ -34,15 +49,25 @@ var reportsList = cli.Command{
 	Usage:   "Lists reports for the user's subscribed profiles by generation date, newest\nfirst.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "`json` uses the resource envelope; `ndjson` streams one canonical row per line.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
-			Usage:     "Maximum number of reports to return (hard-capped at 5)",
-			Default:   5,
+			Usage:     "Maximum number of report rows to scan for this page.",
+			Default:   20,
 			QueryPath: "limit",
 		},
 		&requestflag.Flag[string]{
 			Name:      "profile-id",
-			Usage:     "Filter reports by profile ID",
+			Usage:     "Filter by stable public profile ID (`prf_...`).",
 			QueryPath: "profileId",
 		},
 	},
@@ -93,9 +118,16 @@ func handleReportsRetrieve(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
+	params := y2.ReportGetParams{}
+
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Reports.Get(ctx, cmd.Value("report-id").(string), options...)
+	_, err = client.Reports.Get(
+		ctx,
+		cmd.Value("report-id").(string),
+		params,
+		options...,
+	)
 	if err != nil {
 		return err
 	}

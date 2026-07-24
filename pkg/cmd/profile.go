@@ -113,6 +113,10 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 			Usage:    "Tool configuration for report generation",
 			BodyPath: "toolConfig",
 		},
+		&requestflag.Flag[string]{
+			Name:       "idempotency-key",
+			HeaderPath: "Idempotency-Key",
+		},
 	},
 	Action:          handleProfilesCreate,
 	HideHelpCommand: true,
@@ -180,15 +184,17 @@ var profilesCreate = requestflag.WithInnerFlags(cli.Command{
 	"recursion-config": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "recursion-config.enabled",
+			Usage:      "When false, runs root-topic research without child subtopics.",
 			InnerField: "enabled",
 		},
 		&requestflag.InnerFlag[int64]{
 			Name:       "recursion-config.max-depth",
+			Usage:      "Requested child-layer depth. The current runtime defaults an enabled value of\n`0` to `1` and caps values above `1` at one child layer. This field is ignored\nwhen `enabled` is false.\n",
 			InnerField: "maxDepth",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
-			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
+			Usage:      "Stored strategy preference. The current report engine executes its implemented\nbreadth-first child-search path for every value.\n",
 			InnerField: "strategy",
 		},
 	},
@@ -231,6 +237,27 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 			Required:  true,
 			PathParam: "profileId",
 		},
+		&requestflag.Flag[string]{
+			Name:     "frequency",
+			Usage:    "Report generation frequency",
+			Required: true,
+			BodyPath: "frequency",
+		},
+		&requestflag.Flag[string]{
+			Name:     "name",
+			Required: true,
+			BodyPath: "name",
+		},
+		&requestflag.Flag[string]{
+			Name:     "schedule-time-of-day",
+			Required: true,
+			BodyPath: "scheduleTimeOfDay",
+		},
+		&requestflag.Flag[string]{
+			Name:     "topic",
+			Required: true,
+			BodyPath: "topic",
+		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "audio-config",
 			BodyPath: "audioConfig",
@@ -252,11 +279,6 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 			Name:     "custom-prompt",
 			BodyPath: "customPrompt",
 		},
-		&requestflag.Flag[string]{
-			Name:     "frequency",
-			Usage:    "Report generation frequency",
-			BodyPath: "frequency",
-		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "freshness-config",
 			BodyPath: "freshnessConfig",
@@ -269,10 +291,6 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 			Name:     "model-config",
 			BodyPath: "modelConfig",
 		},
-		&requestflag.Flag[string]{
-			Name:     "name",
-			BodyPath: "name",
-		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "recursion-config",
 			BodyPath: "recursionConfig",
@@ -284,10 +302,6 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 		&requestflag.Flag[string]{
 			Name:     "schedule-day-of-week",
 			BodyPath: "scheduleDayOfWeek",
-		},
-		&requestflag.Flag[string]{
-			Name:     "schedule-time-of-day",
-			BodyPath: "scheduleTimeOfDay",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "search-config",
@@ -302,9 +316,14 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 			Name:     "tag",
 			BodyPath: "tags",
 		},
+		&requestflag.Flag[any]{
+			Name:     "tool-config",
+			Usage:    "Tool configuration for report generation",
+			BodyPath: "toolConfig",
+		},
 		&requestflag.Flag[string]{
-			Name:     "topic",
-			BodyPath: "topic",
+			Name:       "if-match",
+			HeaderPath: "If-Match",
 		},
 	},
 	Action:          handleProfilesUpdate,
@@ -373,15 +392,17 @@ var profilesUpdate = requestflag.WithInnerFlags(cli.Command{
 	"recursion-config": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "recursion-config.enabled",
+			Usage:      "When false, runs root-topic research without child subtopics.",
 			InnerField: "enabled",
 		},
 		&requestflag.InnerFlag[int64]{
 			Name:       "recursion-config.max-depth",
+			Usage:      "Requested child-layer depth. The current runtime defaults an enabled value of\n`0` to `1` and caps values above `1` at one child layer. This field is ignored\nwhen `enabled` is false.\n",
 			InnerField: "maxDepth",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
-			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
+			Usage:      "Stored strategy preference. The current report engine executes its implemented\nbreadth-first child-search path for every value.\n",
 			InnerField: "strategy",
 		},
 	},
@@ -432,6 +453,10 @@ var profilesDelete = cli.Command{
 			Name:      "profile-id",
 			Required:  true,
 			PathParam: "profileId",
+		},
+		&requestflag.Flag[string]{
+			Name:       "if-match",
+			HeaderPath: "If-Match",
 		},
 	},
 	Action:          handleProfilesDelete,
@@ -523,6 +548,10 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 			Name:     "topic",
 			BodyPath: "topic",
 		},
+		&requestflag.Flag[string]{
+			Name:       "if-match",
+			HeaderPath: "If-Match",
+		},
 	},
 	Action:          handleProfilesPartialUpdate,
 	HideHelpCommand: true,
@@ -590,15 +619,17 @@ var profilesPartialUpdate = requestflag.WithInnerFlags(cli.Command{
 	"recursion-config": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "recursion-config.enabled",
+			Usage:      "When false, runs root-topic research without child subtopics.",
 			InnerField: "enabled",
 		},
 		&requestflag.InnerFlag[int64]{
 			Name:       "recursion-config.max-depth",
+			Usage:      "Requested child-layer depth. The current runtime defaults an enabled value of\n`0` to `1` and caps values above `1` at one child layer. This field is ignored\nwhen `enabled` is false.\n",
 			InnerField: "maxDepth",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "recursion-config.strategy",
-			Usage:      `Allowed values: "breadth-first", "depth-first", "hybrid".`,
+			Usage:      "Stored strategy preference. The current report engine executes its implemented\nbreadth-first child-search path for every value.\n",
 			InnerField: "strategy",
 		},
 	},
@@ -782,24 +813,14 @@ func handleProfilesDelete(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Profiles.Delete(ctx, cmd.Value("profile-id").(string), options...)
-	if err != nil {
-		return err
-	}
+	params := y2.ProfileDeleteParams{}
 
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "profiles delete",
-		Transform:      transform,
-	})
+	return client.Profiles.Delete(
+		ctx,
+		cmd.Value("profile-id").(string),
+		params,
+		options...,
+	)
 }
 
 func handleProfilesPartialUpdate(ctx context.Context, cmd *cli.Command) error {

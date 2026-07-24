@@ -15,7 +15,10 @@ func TestReportsRetrieve(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"reports", "retrieve",
-			"--report-id", "k57abc123def456",
+			"--report-id", "rpt_0123456789abcdef01234567",
+			"--format", "markdown",
+			"--include", "include",
+			"--view", "agent",
 		)
 	})
 }
@@ -27,8 +30,10 @@ func TestReportsList(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"reports", "list",
+			"--cursor", "cursor",
+			"--format", "json",
 			"--limit", "1",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_0123456789abcdef01234567",
 		)
 	})
 }
@@ -40,7 +45,7 @@ func TestReportsRetrieveAudio(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"reports", "retrieve-audio",
-			"--report-id", "reportId",
+			"--report-id", "rpt_210b9798eb53baa4e69d31c1",
 			"--redirect=true",
 		)
 	})

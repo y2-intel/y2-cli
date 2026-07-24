@@ -24,6 +24,16 @@ var osintGetConflictIndicators = cli.Command{
 			Usage:     "Filter by event category",
 			QueryPath: "category",
 		},
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "`json` uses the resource envelope; `ndjson` streams one canonical row per line.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of items to return",
@@ -45,6 +55,16 @@ var osintGetGpsJammingZones = cli.Command{
 	Usage:   "Lists GPS interference zones inferred from ADS-B navigation-accuracy degradation\nand aggregated into H3 cells.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of zones to return",
@@ -66,6 +86,16 @@ var osintGetMilitaryPosture = cli.Command{
 	Usage:   "Lists theater posture assessments based on Wingbits ADS-B military aircraft\nactivity. Each includes a `normal`, `elevated`, or `critical` posture and\naircraft counts by type.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of items to return",
@@ -82,6 +112,16 @@ var osintListAircraft = cli.Command{
 	Usage:   "Lists Wingbits ADS-B military aircraft positions, classified by type such as\ntanker, AWACS, or fighter.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of aircraft to return",
@@ -108,6 +148,16 @@ var osintListEvents = cli.Command{
 			Usage:     "Filter by event category",
 			QueryPath: "category",
 		},
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of events to return",
@@ -129,6 +179,16 @@ var osintListVessels = cli.Command{
 	Usage:   "Lists USNI fleet-tracker positions for carrier strike groups and warships.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of vessels to return",
@@ -150,6 +210,16 @@ var osintMapEvents = cli.Command{
 	Usage:   "Lists geolocated OSINT events for map display. Excludes events without\ncoordinates.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of events to return",

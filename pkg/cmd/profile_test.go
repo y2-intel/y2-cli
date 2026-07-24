@@ -28,12 +28,13 @@ func TestProfilesCreate(t *testing.T) {
 			"--freshness-config", "{enabled: true, maxAgeMs: 0, preferRecentSources: true, recencyWeight: 0, validateLinks: true}",
 			"--is-community=true",
 			"--model-config", "{maxOutputTokens: 0, modelId: modelId, temperature: 0}",
-			"--recursion-config", "{enabled: true, maxDepth: 1, strategy: breadth-first}",
+			"--recursion-config", "{enabled: true, maxDepth: 0, strategy: breadth-first}",
 			"--schedule-day-of-month", "1",
 			"--schedule-day-of-week", "monday",
 			"--search-config", "{excludeDomains: [string], includeDomains: [string], maxResults: 0, searchDepth: basic, timeRange: timeRange, topic: topic}",
 			"--tag", "string",
 			"--tool-config", "{}",
+			"--idempotency-key", "Idempotency-Key",
 		)
 	})
 
@@ -68,7 +69,7 @@ func TestProfilesCreate(t *testing.T) {
 			"--model-config.model-id", "modelId",
 			"--model-config.temperature", "0",
 			"--recursion-config.enabled=true",
-			"--recursion-config.max-depth", "1",
+			"--recursion-config.max-depth", "0",
 			"--recursion-config.strategy", "breadth-first",
 			"--schedule-day-of-month", "1",
 			"--schedule-day-of-week", "monday",
@@ -80,6 +81,7 @@ func TestProfilesCreate(t *testing.T) {
 			"--search-config.topic", "topic",
 			"--tag", "string",
 			"--tool-config", "{}",
+			"--idempotency-key", "Idempotency-Key",
 		)
 	})
 
@@ -113,7 +115,7 @@ func TestProfilesCreate(t *testing.T) {
 			"  temperature: 0\n" +
 			"recursionConfig:\n" +
 			"  enabled: true\n" +
-			"  maxDepth: 1\n" +
+			"  maxDepth: 0\n" +
 			"  strategy: breadth-first\n" +
 			"scheduleDayOfMonth: '1'\n" +
 			"scheduleDayOfWeek: monday\n" +
@@ -133,6 +135,7 @@ func TestProfilesCreate(t *testing.T) {
 			t, pipeData,
 			"--api-key", "string",
 			"profiles", "create",
+			"--idempotency-key", "Idempotency-Key",
 		)
 	})
 }
@@ -144,25 +147,27 @@ func TestProfilesUpdate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"profiles", "update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
+			"--frequency", "daily",
+			"--name", "name",
+			"--schedule-time-of-day", "73:16",
+			"--topic", "topic",
 			"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 			"--bluf-structure", "blufStructure",
 			"--branding-template-id", "brandingTemplateId",
 			"--budget-config", "{alertThreshold: 0, maxCostPerReport: 0}",
 			"--custom-prompt", "customPrompt",
-			"--frequency", "daily",
 			"--freshness-config", "{enabled: true, maxAgeMs: 0, preferRecentSources: true, recencyWeight: 0, validateLinks: true}",
 			"--is-community=true",
 			"--model-config", "{maxOutputTokens: 0, modelId: modelId, temperature: 0}",
-			"--name", "name",
-			"--recursion-config", "{enabled: true, maxDepth: 1, strategy: breadth-first}",
+			"--recursion-config", "{enabled: true, maxDepth: 0, strategy: breadth-first}",
 			"--schedule-day-of-month", "scheduleDayOfMonth",
 			"--schedule-day-of-week", "scheduleDayOfWeek",
-			"--schedule-time-of-day", "73:16",
 			"--search-config", "{excludeDomains: [string], includeDomains: [string], maxResults: 0, searchDepth: basic, timeRange: timeRange, topic: topic}",
 			"--status", "active",
 			"--tag", "string",
-			"--topic", "topic",
+			"--tool-config", "{}",
+			"--if-match", "If-Match",
 		)
 	})
 
@@ -175,7 +180,11 @@ func TestProfilesUpdate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"profiles", "update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
+			"--frequency", "daily",
+			"--name", "name",
+			"--schedule-time-of-day", "73:16",
+			"--topic", "topic",
 			"--audio-config.enabled=true",
 			"--audio-config.speed", "0",
 			"--audio-config.voice-id", "voiceId",
@@ -184,7 +193,6 @@ func TestProfilesUpdate(t *testing.T) {
 			"--budget-config.alert-threshold", "0",
 			"--budget-config.max-cost-per-report", "0",
 			"--custom-prompt", "customPrompt",
-			"--frequency", "daily",
 			"--freshness-config.enabled=true",
 			"--freshness-config.max-age-ms", "0",
 			"--freshness-config.prefer-recent-sources=true",
@@ -194,13 +202,11 @@ func TestProfilesUpdate(t *testing.T) {
 			"--model-config.max-output-tokens", "0",
 			"--model-config.model-id", "modelId",
 			"--model-config.temperature", "0",
-			"--name", "name",
 			"--recursion-config.enabled=true",
-			"--recursion-config.max-depth", "1",
+			"--recursion-config.max-depth", "0",
 			"--recursion-config.strategy", "breadth-first",
 			"--schedule-day-of-month", "scheduleDayOfMonth",
 			"--schedule-day-of-week", "scheduleDayOfWeek",
-			"--schedule-time-of-day", "73:16",
 			"--search-config.exclude-domains", "[string]",
 			"--search-config.include-domains", "[string]",
 			"--search-config.max-results", "0",
@@ -209,13 +215,18 @@ func TestProfilesUpdate(t *testing.T) {
 			"--search-config.topic", "topic",
 			"--status", "active",
 			"--tag", "string",
-			"--topic", "topic",
+			"--tool-config", "{}",
+			"--if-match", "If-Match",
 		)
 	})
 
 	t.Run("piping data", func(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("" +
+			"frequency: daily\n" +
+			"name: name\n" +
+			"scheduleTimeOfDay: '73:16'\n" +
+			"topic: topic\n" +
 			"audioConfig:\n" +
 			"  enabled: true\n" +
 			"  speed: 0\n" +
@@ -226,7 +237,6 @@ func TestProfilesUpdate(t *testing.T) {
 			"  alertThreshold: 0\n" +
 			"  maxCostPerReport: 0\n" +
 			"customPrompt: customPrompt\n" +
-			"frequency: daily\n" +
 			"freshnessConfig:\n" +
 			"  enabled: true\n" +
 			"  maxAgeMs: 0\n" +
@@ -238,14 +248,12 @@ func TestProfilesUpdate(t *testing.T) {
 			"  maxOutputTokens: 0\n" +
 			"  modelId: modelId\n" +
 			"  temperature: 0\n" +
-			"name: name\n" +
 			"recursionConfig:\n" +
 			"  enabled: true\n" +
-			"  maxDepth: 1\n" +
+			"  maxDepth: 0\n" +
 			"  strategy: breadth-first\n" +
 			"scheduleDayOfMonth: scheduleDayOfMonth\n" +
 			"scheduleDayOfWeek: scheduleDayOfWeek\n" +
-			"scheduleTimeOfDay: '73:16'\n" +
 			"searchConfig:\n" +
 			"  excludeDomains:\n" +
 			"    - string\n" +
@@ -258,12 +266,13 @@ func TestProfilesUpdate(t *testing.T) {
 			"status: active\n" +
 			"tags:\n" +
 			"  - string\n" +
-			"topic: topic\n")
+			"toolConfig: {}\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",
 			"profiles", "update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
+			"--if-match", "If-Match",
 		)
 	})
 }
@@ -286,7 +295,8 @@ func TestProfilesDelete(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"profiles", "delete",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
+			"--if-match", "If-Match",
 		)
 	})
 }
@@ -298,7 +308,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"profiles", "partial-update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
 			"--audio-config", "{enabled: true, speed: 0, voiceId: voiceId}",
 			"--bluf-structure", "blufStructure",
 			"--branding-template-id", "brandingTemplateId",
@@ -309,7 +319,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"--is-community=true",
 			"--model-config", "{maxOutputTokens: 0, modelId: modelId, temperature: 0}",
 			"--name", "name",
-			"--recursion-config", "{enabled: true, maxDepth: 1, strategy: breadth-first}",
+			"--recursion-config", "{enabled: true, maxDepth: 0, strategy: breadth-first}",
 			"--schedule-day-of-month", "scheduleDayOfMonth",
 			"--schedule-day-of-week", "scheduleDayOfWeek",
 			"--schedule-time-of-day", "73:16",
@@ -317,6 +327,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"--status", "active",
 			"--tag", "string",
 			"--topic", "topic",
+			"--if-match", "If-Match",
 		)
 	})
 
@@ -329,7 +340,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"profiles", "partial-update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
 			"--audio-config.enabled=true",
 			"--audio-config.speed", "0",
 			"--audio-config.voice-id", "voiceId",
@@ -350,7 +361,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"--model-config.temperature", "0",
 			"--name", "name",
 			"--recursion-config.enabled=true",
-			"--recursion-config.max-depth", "1",
+			"--recursion-config.max-depth", "0",
 			"--recursion-config.strategy", "breadth-first",
 			"--schedule-day-of-month", "scheduleDayOfMonth",
 			"--schedule-day-of-week", "scheduleDayOfWeek",
@@ -364,6 +375,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"--status", "active",
 			"--tag", "string",
 			"--topic", "topic",
+			"--if-match", "If-Match",
 		)
 	})
 
@@ -395,7 +407,7 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			"name: name\n" +
 			"recursionConfig:\n" +
 			"  enabled: true\n" +
-			"  maxDepth: 1\n" +
+			"  maxDepth: 0\n" +
 			"  strategy: breadth-first\n" +
 			"scheduleDayOfMonth: scheduleDayOfMonth\n" +
 			"scheduleDayOfWeek: scheduleDayOfWeek\n" +
@@ -417,7 +429,8 @@ func TestProfilesPartialUpdate(t *testing.T) {
 			t, pipeData,
 			"--api-key", "string",
 			"profiles", "partial-update",
-			"--profile-id", "k57abc123def456",
+			"--profile-id", "prf_210b9798eb53baa4e69d31c1",
+			"--if-match", "If-Match",
 		)
 	})
 }

@@ -39,6 +39,16 @@ var osintCountriesGetCountryNews = cli.Command{
 			Required:  true,
 			PathParam: "countryCode",
 		},
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Select the JSON resource envelope, row-oriented NDJSON, or an RFC 7946 FeatureCollection.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of news items to return",
@@ -74,6 +84,16 @@ var osintCountriesGetPredictionMarkets = cli.Command{
 			Name:      "country-code",
 			Required:  true,
 			PathParam: "countryCode",
+		},
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "`json` uses the resource envelope; `ndjson` streams one canonical row per line.",
+			QueryPath: "format",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",

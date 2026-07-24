@@ -41,6 +41,10 @@ var webhooksCreate = cli.Command{
 			Usage:    "Shared secret for signature verification",
 			BodyPath: "secret",
 		},
+		&requestflag.Flag[string]{
+			Name:       "idempotency-key",
+			HeaderPath: "Idempotency-Key",
+		},
 	},
 	Action:          handleWebhooksCreate,
 	HideHelpCommand: true,
@@ -48,7 +52,7 @@ var webhooksCreate = cli.Command{
 
 var webhooksUpdate = cli.Command{
 	Name:    "update",
-	Usage:   "Updates supplied fields on a webhook configuration. Omitted fields remain\nunchanged.",
+	Usage:   "Replaces every mutable webhook configuration field. `name` and `url` are\nrequired; omitted optional fields are reset to their defaults.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -56,8 +60,21 @@ var webhooksUpdate = cli.Command{
 			Required:  true,
 			PathParam: "webhookId",
 		},
+		&requestflag.Flag[string]{
+			Name:     "name",
+			Usage:    "Webhook display name",
+			Required: true,
+			BodyPath: "name",
+		},
+		&requestflag.Flag[string]{
+			Name:     "url",
+			Usage:    "Webhook endpoint URL (must be HTTPS)",
+			Required: true,
+			BodyPath: "url",
+		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "headers",
+			Usage:    "Custom headers to include in webhook deliveries",
 			BodyPath: "headers",
 		},
 		&requestflag.Flag[bool]{
@@ -65,16 +82,13 @@ var webhooksUpdate = cli.Command{
 			BodyPath: "isActive",
 		},
 		&requestflag.Flag[string]{
-			Name:     "name",
-			BodyPath: "name",
-		},
-		&requestflag.Flag[string]{
 			Name:     "secret",
+			Usage:    "Shared secret for signature verification",
 			BodyPath: "secret",
 		},
 		&requestflag.Flag[string]{
-			Name:     "url",
-			BodyPath: "url",
+			Name:       "if-match",
+			HeaderPath: "If-Match",
 		},
 	},
 	Action:          handleWebhooksUpdate,
@@ -99,6 +113,10 @@ var webhooksDelete = cli.Command{
 			Name:      "webhook-id",
 			Required:  true,
 			PathParam: "webhookId",
+		},
+		&requestflag.Flag[string]{
+			Name:       "if-match",
+			HeaderPath: "If-Match",
 		},
 	},
 	Action:          handleWebhooksDelete,
@@ -271,24 +289,14 @@ func handleWebhooksDelete(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Webhooks.Delete(ctx, cmd.Value("webhook-id").(string), options...)
-	if err != nil {
-		return err
-	}
+	params := y2.WebhookDeleteParams{}
 
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "webhooks delete",
-		Transform:      transform,
-	})
+	return client.Webhooks.Delete(
+		ctx,
+		cmd.Value("webhook-id").(string),
+		params,
+		options...,
+	)
 }
 
 func handleWebhooksTest(ctx context.Context, cmd *cli.Command) error {

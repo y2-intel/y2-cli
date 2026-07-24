@@ -19,6 +19,7 @@ func TestWebhooksCreate(t *testing.T) {
 			"--url", "https://example.com/webhook",
 			"--headers", "{foo: string}",
 			"--secret", "secret",
+			"--idempotency-key", "Idempotency-Key",
 		)
 	})
 
@@ -34,6 +35,7 @@ func TestWebhooksCreate(t *testing.T) {
 			t, pipeData,
 			"--api-key", "string",
 			"webhooks", "create",
+			"--idempotency-key", "Idempotency-Key",
 		)
 	})
 }
@@ -45,29 +47,31 @@ func TestWebhooksUpdate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"webhooks", "update",
-			"--webhook-id", "webhookId",
+			"--webhook-id", "whk_210b9798eb53baa4e69d31c1",
+			"--name", "My Webhook",
+			"--url", "https://example.com/webhook",
 			"--headers", "{foo: string}",
 			"--is-active=true",
-			"--name", "name",
 			"--secret", "secret",
-			"--url", "https://example.com",
+			"--if-match", "If-Match",
 		)
 	})
 
 	t.Run("piping data", func(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("" +
+			"name: My Webhook\n" +
+			"url: https://example.com/webhook\n" +
 			"headers:\n" +
 			"  foo: string\n" +
 			"isActive: true\n" +
-			"name: name\n" +
-			"secret: secret\n" +
-			"url: https://example.com\n")
+			"secret: secret\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",
 			"webhooks", "update",
-			"--webhook-id", "webhookId",
+			"--webhook-id", "whk_210b9798eb53baa4e69d31c1",
+			"--if-match", "If-Match",
 		)
 	})
 }
@@ -90,7 +94,8 @@ func TestWebhooksDelete(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"webhooks", "delete",
-			"--webhook-id", "webhookId",
+			"--webhook-id", "whk_210b9798eb53baa4e69d31c1",
+			"--if-match", "If-Match",
 		)
 	})
 }
@@ -102,7 +107,7 @@ func TestWebhooksTest(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"webhooks", "test",
-			"--webhook-id", "webhookId",
+			"--webhook-id", "whk_210b9798eb53baa4e69d31c1",
 		)
 	})
 }

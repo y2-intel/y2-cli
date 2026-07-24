@@ -19,6 +19,16 @@ var newsList = cli.Command{
 	Usage:   "Lists cached Y2 News Terminal items with topic filters and pagination.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "cursor",
+			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
+			QueryPath: "cursor",
+		},
+		&requestflag.Flag[string]{
+			Name:      "format",
+			Usage:     "Use `ndjson` for row-oriented streaming output.",
+			QueryPath: "format",
+		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
 			Usage:     "Maximum number of items to return",
@@ -27,7 +37,7 @@ var newsList = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "topics",
-			Usage:     "Comma-separated list of topics to filter by.\nValid topics: ai, ai_agents, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, on_chain_whale, perps, ripple, rwa, solana, tech, token_listings, virtuals.\nDefault: crypto, ai_agents, macro, bitcoin, ethereum, tech\n",
+			Usage:     "Comma-separated list of topics to filter by.\nUse `GET /news/feeds` to discover the current topic catalog.\nDefault: crypto, geopolitics, macro, equities, ai, energy\n",
 			QueryPath: "topics",
 		},
 	},
@@ -48,7 +58,7 @@ var newsGetRecaps = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "topics",
-			Usage:     "Comma-separated list of topics.\nValid topics: ai, ai_agents, base, bitcoin, crypto, dats, defi, ethereum, hyperliquid, machine_learning, macro, on_chain_whale, perps, ripple, rwa, solana, tech, token_listings, virtuals\n",
+			Usage:     "Comma-separated list of topics.\nUse `GET /news/feeds` to discover the current topic catalog.\n",
 			QueryPath: "topics",
 		},
 	},
