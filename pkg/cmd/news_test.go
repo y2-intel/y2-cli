@@ -15,6 +15,7 @@ func TestNewsList(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"news", "list",
+			"--country-code", "ES",
 			"--cursor", "cursor",
 			"--format", "json",
 			"--limit", "1",

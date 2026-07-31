@@ -20,6 +20,11 @@ var newsList = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
+			Name:      "country-code",
+			Usage:     "Filter by canonical ISO 3166-1 alpha-2 country code. When supplied without\n`topics`, the query searches every News Terminal topic.\n",
+			QueryPath: "countryCode",
+		},
+		&requestflag.Flag[string]{
 			Name:      "cursor",
 			Usage:     "Opaque continuation token from the previous response. Bound to the original filters and ordering.",
 			QueryPath: "cursor",
