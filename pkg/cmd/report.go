@@ -61,7 +61,7 @@ var reportsList = cli.Command{
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
-			Usage:     "Maximum number of report rows to scan for this page.",
+			Usage:     "Maximum number of reports to return for this page.",
 			Default:   20,
 			QueryPath: "limit",
 		},
