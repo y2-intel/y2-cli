@@ -31,7 +31,7 @@ var osintCountriesGetCountryInstabilityIndex = cli.Command{
 
 var osintCountriesGetCountryNews = cli.Command{
 	Name:    "get-country-news",
-	Usage:   "Returns recent country news from the OSINT event pipeline.",
+	Usage:   "Returns recent country news from the OSINT event pipeline. Uses the\nobservation's indexed ISO country attribution, not countries merely mentioned or\nexposed to a regional event. Includes unexpired RSS, GDELT, ACLED, News\nTerminal, and Y2 report observations, excluding seismic and weather categories.\nFilters apply before pagination; satellite detections do not consume the news\nresult window. Results retain canonical observation IDs.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
